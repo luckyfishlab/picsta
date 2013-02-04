@@ -5,6 +5,16 @@ def create_visitor
     :password => "changeme", :password_confirmation => "changeme" }
 end
 
+def create_user_as opt
+  @my_visitor ||= { :name => opt,  :email => "#{opt}@example.com",
+                    :password => "changeme", :password_confirmation => "changeme" }
+  # delete
+  @user ||= User.where(:email => @my_visitor[:email]).first
+  @user.destroy unless @user.nil?
+
+  @user = FactoryGirl.create(:user, @my_visitor)
+end
+
 def find_user
   @user ||= User.where(:email => @visitor[:email]).first
 end
@@ -45,6 +55,13 @@ def sign_in
   click_button "Sign in"
 end
 
+def sign_in_as opt
+  visit '/users/sign_in'
+  fill_in "user_email", :with => @my_visitor[:email]
+  fill_in "user_password", :with => @my_visitor[:password]
+  click_button "Sign in"
+end
+
 ### GIVEN ###
 Given /^I am not logged in$/ do
   visit '/users/sign_out'
@@ -53,6 +70,11 @@ end
 Given /^I am logged in$/ do
   create_user
   sign_in
+end
+
+Given /^I am logged in as "(.*?)"$/ do |arg1|
+  create_user_as arg1
+  sign_in_as arg1
 end
 
 Given /^I exist as a user$/ do
