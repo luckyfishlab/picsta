@@ -9,4 +9,8 @@ class Power
   power :albums do
     Album.where(:user_id => @user.id)
   end
+
+  power :shared_albums do
+    Share.where(:user_id => @user.id)
+  end
 end

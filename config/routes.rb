@@ -1,5 +1,7 @@
 Sugar::Application.routes.draw do
-  resources :albums
+  resources :albums do
+    resource :shares, only: [:create, :destroy,:new]
+  end
 
 
   authenticated :user do
@@ -8,4 +10,6 @@ Sugar::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  resources :shares, only: [:create, :destroy]
+
 end

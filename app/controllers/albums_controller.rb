@@ -4,7 +4,9 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
+    @user = current_user
     @albums = end_of_association_chain.all
+    @shares = Share.where(:user_id => @user)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -35,7 +37,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = end_of_association_chain.all.find(params[:id])
+    @album = end_of_association_chain.find(params[:id])
   end
 
   # POST /albums
@@ -57,7 +59,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.json
   def update
-    @album = end_of_association_chain.all.find(params[:id])
+    @album = end_of_association_chain.find(params[:id])
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
@@ -73,7 +75,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = end_of_association_chain.all.find(params[:id])
+    @album = end_of_association_chain.find(params[:id])
     @album.destroy
 
     respond_to do |format|
@@ -83,7 +85,6 @@ class AlbumsController < ApplicationController
   end
 
   def end_of_association_chain
-
     Power.current = Power.new(current_user)
     Power.current.albums
   end

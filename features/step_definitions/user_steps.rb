@@ -76,6 +76,9 @@ Given /^I am logged in as "(.*?)"$/ do |arg1|
   create_user_as arg1
   sign_in_as arg1
 end
+Given /^I sign in as "(.*?)"$/ do |arg1|
+  sign_in_as arg1
+end
 
 Given /^I exist as a user$/ do
   create_user

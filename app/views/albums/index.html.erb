@@ -20,6 +20,11 @@
 <% end %>
 </table>
 
+<h1>Shared Albums</h1>
+<% @shares.each do |share| %>
+    <%= share.id %> || <%= share.album.title %>
+<% end %>
+
 <br />
 
 <%= link_to 'New Album', new_album_path %>
