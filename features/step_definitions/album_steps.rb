@@ -17,6 +17,12 @@ Given /^I share the album "(.*?)" with "(.*?)"$/ do |arg1, arg2|
   click_button "Share"
 end
 
+Given /^I visit the album "(.*?)"$/ do |arg1|
+  visit '/albums'
+  click_link arg1
+end
+
+
 When /^I try the last URL$/ do
   visit @last_uri
 

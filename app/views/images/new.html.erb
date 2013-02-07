@@ -1,0 +1,16 @@
+<%= simple_form_for(@image, :html => {:class => 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+    <%= display_base_errors @image %>
+    <%= f.hidden_field :album_id %>
+    <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :pic, "Image file" %>
+      <%= f.file_field :pic %>
+    </p>
+    <p>
+    <%= f.submit "Save", :class => 'btn-primary' %>
+    </p>
+<% end %>

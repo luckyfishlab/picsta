@@ -4,6 +4,8 @@ class Album < ActiveRecord::Base
   belongs_to :user
   has_many :shares, dependent: :destroy
   has_many :allowed_viewers, through: :shares, source: :user
+  has_many :images
+
 
   ### TODO : this model should have something about handling
   ### the share table when we destroy an album.

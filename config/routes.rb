@@ -11,5 +11,6 @@ Shoebox::Application.routes.draw do
   devise_for :users
   resources :users
   resources :shares, only: [:create, :destroy]
+  resources :images
 
 end

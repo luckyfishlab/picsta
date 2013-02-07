@@ -10,6 +10,16 @@
   <%= @album.user.name %>
 </p>
 
+<div id="masonry-container" class="fluid  clearfix">
+  <% i = 0 %>
+  <% @album.images.each do |image| %>
+    <div class="box">
+      <p><%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), image %></p>
+     </div>
+<% end %>
+</div>
+
+<%= link_to "Add Images", new_image_path(:album_id => @album) %> |
 <%= link_to 'Share Album', new_album_shares_path(@album) %> |
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
