@@ -1,4 +1,4 @@
-Sugar::Application.routes.draw do
+Shoebox::Application.routes.draw do
   resources :albums do
     resource :shares, only: [:create, :destroy,:new]
   end

@@ -15,7 +15,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Sugar
+module Shoebox
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers

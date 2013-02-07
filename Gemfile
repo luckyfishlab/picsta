@@ -32,3 +32,10 @@ gem "libv8", ">= 3.11.8"
 gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
 gem "consul"
 gem "assignable_values"
+
+#gem 'masonry-rails'
+
+# Support for images, s3
+gem "carrierwave", '~> 0.8.0'
+gem "rmagick", '~> 2.13.2'
+gem "fog", "~> 1.3.1"
