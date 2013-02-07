@@ -1,9 +1,8 @@
-<h1>Listing albums</h1>
+<h1>Your Albums</h1>
 
 <table>
   <tr>
     <th>Title</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,17 +11,16 @@
 <% @albums.each do |album| %>
   <tr>
     <td><%= link_to album.title, album %></td>
-    <td><%= album.user_id %></td>
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
     <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
+<br/>
 <h1>Shared Albums</h1>
 <% @shares.each do |share| %>
-    <%= share.id %> || <%= share.album.title %>
+    <%= link_to share.album.title, share.album %>
 <% end %>
 
 <br />

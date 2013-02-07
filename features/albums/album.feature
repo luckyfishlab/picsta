@@ -32,3 +32,4 @@ Feature: Manage Albums
     And I sign in as "Joe"
     When I list albums
     Then I should see the album "Family Album"
+

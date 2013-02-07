@@ -16,12 +16,16 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
-    @album = end_of_association_chain.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @album }
+    @album = readable_album(params[:id])
+    if @album
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @album }
+      end
+    else
+      redirect_to albums_path, notice: "Insufficient permission to access the requested album"
     end
+
   end
 
   # GET /albums/new
@@ -84,6 +88,10 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def readable_album id
+    Power.current = Power.new(current_user)
+    Power.current.readable_album id
+  end
   def end_of_association_chain
     Power.current = Power.new(current_user)
     Power.current.albums

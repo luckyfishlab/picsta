@@ -14,7 +14,6 @@ Given /^I share the album "(.*?)" with "(.*?)"$/ do |arg1, arg2|
   click_link arg1
   click_link "Share Album"
   select(arg2, :from => "User")
-  #fill_in "Email", :with => arg2
   click_button "Share"
 end
 
