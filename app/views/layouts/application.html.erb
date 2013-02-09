@@ -4,20 +4,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Shoebox" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Shoebox" %>">
+    <!--
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
+
+
     <%= google_analytics_js %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <header class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navbar-inverse">
       <nav class="navbar-inner">
         <div class="container">
           <%= render 'layouts/navigation' %>
         </div>
       </nav>
-    </header>
+    </div>
     <div id="main" role="main">
       <div class="container">
         <div class="content">
