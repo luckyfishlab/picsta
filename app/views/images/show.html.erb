@@ -1,6 +1,6 @@
 <%= @image.title %>
 <%= image_tag @image.pic_url() if @image.pic? %>
 <div class="actions">
-   <%= images_toolbar_helper(@image) %> |
+   <%= images_toolbar_helper(@image) %>
    <%= link_to 'Back', album_path(@image.album_id) %> 
  </div>

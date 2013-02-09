@@ -8,7 +8,20 @@ class Power
  power :albums do
     Album.where(:user_id => @user.id)
   end
-
+  power :users do
+    if @user.id != 1
+      false
+    else
+      true
+    end
+  end
+  power :is_admin do
+    if @user.id == 1
+      true
+    else
+      false
+    end
+  end
   power :updatable_albums do
     Album.where(:user_id => @user.id)
   end

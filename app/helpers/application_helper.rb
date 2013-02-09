@@ -31,4 +31,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def nav_association_chain
+    Power.current ||= Power.new(current_user)
+    Power.current
+  end
 end
