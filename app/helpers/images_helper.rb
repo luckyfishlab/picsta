@@ -3,7 +3,7 @@ module ImagesHelper
     ret_text = ''
     album = record.album
     if Power.current.albums.include?(album)
-      ret_test << "#{link_to "Remove", @image, :confirm => 'Are you sure?', :method => :delete} | "
+      ret_text << "#{link_to "Remove", @image, :confirm => 'Are you sure?', :method => :delete} | "
     end
     ret_text.html_safe
   end
