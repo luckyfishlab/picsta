@@ -55,34 +55,19 @@ describe ImagesController do
   describe "DELETE destroy" do
 
     before do
-
-
-      #FactoryGirl.create(:image)
       @user = FactoryGirl.create(:user)
       sign_in @user
-    end
-    it "should find the image" do
-      image = mock_model(Image).as_null_object
 
-      Image.stub(:find).with(image.id.to_s).and_return(image)
-      image.should_receive(:destroy).and_return(true)
-
-
-      delete :destroy, :id => image
-
+      @album = FactoryGirl.create(:album)
+      @image = FactoryGirl.create(:image)
     end
     it "redirects to the Album's index" do
-      image = mock_model(Image).as_null_object
-      album = mock_model(Album).as_null_object
 
-      Image.stub(:find).with(image.id.to_s).and_return(image)
-      Image.stub(:destroy).and_return(true)
-
-      delete :destroy, :id=> image
-      response.should redirect_to(images_path)
+      delete :destroy, :id=> @image
+      response.should redirect_to(album_path)
     end
 
-    it "sets a flash[:notice] message" do
+    it "sets a flash[:notice] message for failure" do
       image = mock_model(Image).as_null_object
       album = mock_model(Album).as_null_object
 
@@ -90,7 +75,7 @@ describe ImagesController do
       Image.stub(:destroy).and_return(true)
 
       delete :destroy, :id=> image
-      flash[:notice].should eq("The image was successfully removed.")
+      flash[:notice].should eq("You don't have permission to delete this image.")
     end
 
 
