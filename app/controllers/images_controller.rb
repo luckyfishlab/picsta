@@ -10,8 +10,10 @@ class ImagesController < ApplicationController
       render :action => "new"
     end
   end
+
   def show
     @image = Image.find(params[:id])
+
     Power.current = Power.new(current_user)
 
   end
