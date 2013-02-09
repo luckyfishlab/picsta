@@ -6,8 +6,8 @@ describe ImagesController do
     before do
       Image.stub(:new).and_return(image)
 
-      #@user = FactoryGirl.create(:user)
-      #sign_in @user
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
 
     it "creates a new image" do
@@ -58,6 +58,8 @@ describe ImagesController do
 
 
       #FactoryGirl.create(:image)
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
     it "should find the image" do
       image = mock_model(Image).as_null_object

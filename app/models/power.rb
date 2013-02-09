@@ -5,20 +5,14 @@ class Power
     @user = user
   end
 
-
-  power :albums do
+ power :albums do
     Album.where(:user_id => @user.id)
   end
-=begin
-  power :editable_album?:album_id
-    album = Album.find(album_id)
-    if album.user_id == @user.id
-      true
-    else
-      false
-    end
+
+  power :updatable_albums do
+    Album.where(:user_id => @user.id)
   end
-=end
+
   power :readable_album  do |album_id|
     album = Album.find(album_id)
     if album.user_id == @user.id

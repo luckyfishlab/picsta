@@ -7,10 +7,17 @@ Given /^I click on the image$/ do
   click_link "test image"
 end
 
-#Given /^I want to delete an image$/ do
-#  click_link "Remove"
-#end
+Given /^I save the URL$/ do
+  @last_uri = URI.parse(current_url).path
+end
 
+When /^I try to delete an image$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I get an error message$/ do
+  pending # express the regexp above with the code you wish you had
+end
 ### WHEN ###
 When /^I upload an image$/ do
   fill_in "Title", :with => "test image"

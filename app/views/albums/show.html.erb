@@ -19,7 +19,7 @@
 <% end %>
 </div>
 
-<%= link_to "Add Images", new_image_path(:album_id => @album) %> |
-<%= link_to 'Share Album', new_album_shares_path(@album) %> |
-<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= toolbar_helper(@album) %>
+
 <%= link_to 'Back', albums_path %>
+
