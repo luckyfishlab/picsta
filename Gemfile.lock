@@ -134,6 +134,8 @@ GEM
       treetop (~> 1.4.8)
     memoizer (1.0.1)
     mime-types (1.19)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     multi_json (1.5.0)
     net-scp (1.0.6)
       net-ssh (>= 2.6.5)
@@ -170,7 +172,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     ref (1.0.2)
-    rmagick (2.13.2)
+    rename (0.0.6)
+      rails (>= 3.0.0)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -207,6 +210,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    subexec (0.2.2)
     therubyracer (0.11.3)
       libv8 (~> 3.11.8.12)
       ref
@@ -253,10 +257,11 @@ DEPENDENCIES
   jquery-rails
   launchy (>= 2.1.2)
   libv8 (>= 3.11.8)
+  mini_magick
   pg
   quiet_assets (>= 1.0.1)
   rails (= 3.2.11)
-  rmagick (~> 2.13.2)
+  rename
   rspec
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)

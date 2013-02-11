@@ -6,11 +6,11 @@ gem 'rails', '3.2.11'
 
 gem 'rspec', :require => false
 
-group :test do
+group :test, :development do
   gem 'sqlite3'
 end
-group :development, :production do
-  gem 'pg'
+group :production do
+  gem 'pg', :require => false
 end
 
 group :assets do
@@ -46,5 +46,7 @@ gem "assignable_values"
 
 # Support for images, s3
 gem "carrierwave", '~> 0.8.0'
-gem "rmagick", '~> 2.13.2'
+#gem "rmagick", '~> 2.13.2'
+gem "mini_magick"
 gem "fog", "~> 1.3.1"
+gem 'rename'

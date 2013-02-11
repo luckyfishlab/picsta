@@ -15,7 +15,3 @@
 //= require bootstrap
 //= require jquery.backstretch.min
 //= require_tree .
-
-$('document').ready(function() {
-  $.backstretch('/assets/birthday.jpg');
-});

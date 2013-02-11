@@ -2,14 +2,11 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Shoebox" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Shoebox" %>">
-    <!--
-    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
-    -->
-    <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <title><%= content_for?(:title) ? yield(:title) : "Picsta" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Picsta" %>">
+
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -20,6 +17,7 @@
     <%= google_analytics_js %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
+
     <div class="navbar navbar-fixed-top navbar-inverse">
       <nav class="navbar-inner">
         <div class="container">
@@ -27,6 +25,7 @@
         </div>
       </nav>
     </div>
+
     <div id="main" role="main">
       <div class="container">
         <div class="content">
@@ -42,7 +41,7 @@
     <div class="container">
 
     <div class="footer">
-      &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %>
+     <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> </p>
     </div>
     </div>
   </body>

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Shoebox::Application.load_tasks
+Picsta::Application.load_tasks
