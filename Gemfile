@@ -50,3 +50,5 @@ gem "carrierwave", '~> 0.8.0'
 gem "mini_magick"
 gem "fog", "~> 1.3.1"
 gem 'rename'
+
+gem 'newrelic_rpm'
