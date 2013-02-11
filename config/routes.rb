@@ -9,7 +9,13 @@ Picsta::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
-  devise_for :users
+
+  if Rails.env == 'production'
+    devise_for :users, :controllers => { :registrations => "registrations" }
+  else
+    devise_for :users
+  end
+
   resources :users
   resources :shares, only: [:create, :destroy]
   resources :images
