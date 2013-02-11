@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :albums
   has_many :shares
+
+  has_many :memberships
+  has_many :roles, :through => :memberships
 end

@@ -166,5 +166,27 @@ describe AlbumsController do
       delete :destroy, {:id => album.to_param}, valid_session
       response.should redirect_to(albums_url)
     end
+
+    it "does not destroy for user signed out" do
+      album = Album.create! valid_attributes
+      expect {
+        sign_out @user
+        delete :destroy, {:id => album.to_param}
+      }.to change(Album, :count).by(0)
+
+    end
+
+    it "does not destroy other user's images" do
+      album = Album.create! valid_attributes
+      sign_out @user
+      @user2 = FactoryGirl.create(:user2)
+      sign_in @user2
+      expect {
+        delete :destroy, {:id => album.to_param}, valid_session
+        sign_out @user2
+      }.to change(Album, :count).by(0)
+
+    end
   end
+
 end
