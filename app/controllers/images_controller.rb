@@ -1,6 +1,11 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    flash[:notice] = "Access not available"
+    redirect_to root_path
+  end
+
   def create
     @image = Image.new(params[:image])
     if @image.save

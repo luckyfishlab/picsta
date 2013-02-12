@@ -80,4 +80,31 @@ describe ImagesController do
 
 
   end
+  describe "GET index" do
+    before(:each) do
+      @user = FactoryGirl.create(:user3)
+      @admin = FactoryGirl.create(:user4)
+    end
+
+    def valid_session
+        {"warden.user.user.key" => session["warden.user.user.key"]}
+    end
+
+    it "should fail when not logged in" do
+      get :index, {}
+      response.should be_redirect
+    end
+
+    it "should fail when a user" do
+      sign_in @user
+      get :index, {}, valid_session
+      response.should be_redirect
+    end
+
+    it "should fail when an admin"  do
+      sign_in @admin
+      get :index, {}, valid_session
+      response.should be_redirect
+    end
+  end
 end

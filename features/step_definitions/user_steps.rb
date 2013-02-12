@@ -15,6 +15,16 @@ def create_user_as opt
   @user = FactoryGirl.create(:user, @my_visitor)
 end
 
+def create_admin_as opt
+  @my_visitor ||= { :name => 'Test Admin',  :email => "#{opt}@example.com",
+    :password => "changeme", :password_confirmation => "changeme" }
+
+  @user ||= User.where(:email => @my_visitor[:email]).first
+  @user.destroy unless @user.nil?
+
+  @user = FactoryGirl.create(:user4, @my_visitor)
+end
+
 def find_user
   @user ||= User.where(:email => @visitor[:email]).first
 end
