@@ -5,9 +5,9 @@ Picsta::Application.routes.draw do
   end
 
 
-  authenticated :user do
-    root :to => 'home#index'
-  end
+  #authenticated :user do
+  #  root :to => 'home#index'
+  #end
   root :to => "home#index"
 
   if Rails.env == 'production'

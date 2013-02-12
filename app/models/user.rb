@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :roles, :through => :memberships
+
+
+  #def visible
+  #     where("roles.name = ?", :admin)
+  #end
+
 end

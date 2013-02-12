@@ -5,23 +5,46 @@ class Power
     @user = user
   end
 
- power :albums do
+  power :albums do
     Album.where(:user_id => @user.id)
   end
+
   power :users do
-    if @user.id != 1
-      false
+    if self.is_admin == true
+      User
     else
-      true
+      nil
     end
   end
+
   power :is_admin do
-    if @user.id == 1
+    if Rails.env == 'test' or Rails.env == 'cucumber'
+      if @user.name.eql?("Test Admin")
+        true
+      else
+        false
+
+      end
+    else
+      if @user.name.eql?("Dana Spisak")
+        true
+      else
+        false
+      end
+    end
+  end
+
+=begin
+    @members = Membership.all
+    roles = @user.roles.where(:name => :admin)
+    if roles.first
       true
     else
       false
     end
-  end
+    end
+=end
+
   power :updatable_albums do
     Album.where(:user_id => @user.id)
   end
