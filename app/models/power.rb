@@ -17,8 +17,27 @@ class Power
     end
   end
 
+  power :is_subscriber do
+    roles = @user.roles.where(:name => :subscriber)
+    if roles.first.nil?
+      false
+    else
+      true
+    end
+  end
+
   power :is_admin do
     if Rails.env == 'test' or Rails.env == 'cucumber'
+=begin
+      ## TODO this is a stub for what it should really be doing
+      ## instead of using hardcoded users
+      roles = @user.roles.where(:name => :admin)
+      if roles.first.nil?
+        false
+      else
+        true
+      end
+=end
       if @user.name.eql?("Test Admin")
         true
       else
@@ -26,10 +45,11 @@ class Power
 
       end
     else
-      if @user.name.eql?("Dana Spisak")
-        true
-      else
+      roles = @user.roles.where(:name => :admin)
+      if roles.first.nil?
         false
+      else
+        true
       end
     end
   end

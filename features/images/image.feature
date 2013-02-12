@@ -4,8 +4,7 @@ Feature: Manage images
   so that I can control the images I share with other users
 
   Scenario: I upload an image
-    Given I exist as a user
-    And I am logged in
+    Given I am logged in as "Steve" as a "subscriber"
     And I create the album "uploads"
     And I visit the album "uploads"
     And I want to add images to the album
@@ -13,8 +12,7 @@ Feature: Manage images
     Then I see a successful add image message
 
   Scenario: I delete an image
-    Given I exist as a user
-    And I am logged in
+    Given I am logged in as "Steve" as a "subscriber"
     And I create the album "uploads"
     And I visit the album "uploads"
     And I want to add images to the album

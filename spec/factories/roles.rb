@@ -7,4 +7,7 @@ FactoryGirl.define do
   factory :admin_role, :class => :role do
     name "admin"
   end
+  factory :subscriber_role, :class => :role do
+    name "subscriber"
+  end
 end

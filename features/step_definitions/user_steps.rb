@@ -1,5 +1,6 @@
 ### UTILITY METHODS ###
 
+
 def create_visitor
   @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
     :password => "changeme", :password_confirmation => "changeme" }
@@ -13,6 +14,16 @@ def create_user_as opt
   @user.destroy unless @user.nil?
 
   @user = FactoryGirl.create(:user, @my_visitor)
+end
+
+def create_subscriber_as opt
+  @my_visitor ||= { :name => 'Test Subscriber',  :email => "#{opt}@example.com",
+    :password => "changeme", :password_confirmation => "changeme" }
+
+  @user ||= User.where(:email => @my_visitor[:email]).first
+  @user.destroy unless @user.nil?
+
+  @user = FactoryGirl.create(:user5, @my_visitor)
 end
 
 def create_admin_as opt
@@ -82,8 +93,20 @@ Given /^I am logged in$/ do
   sign_in
 end
 
-Given /^I am logged in as "(.*?)"$/ do |arg1|
-  create_user_as arg1
+Given /^I am logged in as "(.*?)" as a "(.*?)"$/ do |arg1, role|
+
+  case role
+    when "viewer"
+      create_user_as arg1
+    when "admin"
+      create_admin_as arg1
+    when "subscriber"
+      create_subscriber_as arg1
+    else
+      puts "I couldn't match a role"
+  end
+
+  #create_user_as arg1
   sign_in_as arg1
 end
 Given /^I sign in as "(.*?)"$/ do |arg1|

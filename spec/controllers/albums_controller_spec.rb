@@ -20,7 +20,7 @@ require 'spec_helper'
 
 describe AlbumsController do
   before (:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user5)
     sign_in @user
   end
 

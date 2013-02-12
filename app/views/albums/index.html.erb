@@ -31,4 +31,4 @@
 
 <br />
 
-<%= link_to 'New Album', new_album_path, :class=>"btn" %>
+<%= link_to 'New Album', new_album_path, :class=>"btn" if Power.current.is_subscriber or Power.current.is_admin %>
