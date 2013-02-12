@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def nav_association_chain
-    Power.current ||= Power.new(current_user)
+    Power.current = Power.new(current_user)
     Power.current
   end
 end

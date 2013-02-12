@@ -10,3 +10,11 @@ end
 Then /^I should see the admin portal$/ do
   page.should have_content "Hello Admin"
 end
+
+When /^I visit the root$/ do
+  visit '/'
+end
+
+Then /^I should not see the admin link$/ do
+  page.should_not have_content "Admin"
+end
