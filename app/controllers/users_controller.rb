@@ -1,4 +1,3 @@
-require 'pp'
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
@@ -21,13 +20,12 @@ class UsersController < ApplicationController
     if Power.current.is_admin == true
       @user = end_of_association_chain.find(params[:id])
       respond_to do |format|
-        format.html # index.html.erb
+        format.html # show.html.erb
       end
     else
       flash[:notice] = "Access not available"
       redirect_to root_path
     end
-
   end
 
   def update

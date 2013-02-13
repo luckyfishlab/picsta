@@ -10,6 +10,8 @@ Picsta::Application.routes.draw do
   #end
   root :to => "home#index"
 
+  devise_for :users, :controllers => { :invitations => 'invitations' }
+
   if Rails.env == 'production'
     devise_for :users, :controllers => { :registrations => "registrations" }
   else
