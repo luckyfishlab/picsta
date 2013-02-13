@@ -42,7 +42,7 @@ gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require
 gem "consul", :git => 'git://github.com/luckyfishlab/consul.git'
 gem "assignable_values"
 
-#gem 'masonry-rails'
+#gem 'masonry-rails', :git => 'git://github.com/kristianmandrup/masonry-rails.git'
 
 # Support for images, s3
 gem "carrierwave", '~> 0.8.0'

@@ -27,4 +27,5 @@ Picsta::Application.routes.draw do
   match '/about' => 'static_pages#about'
   match '/privacy_policy' => 'static_pages#privacy'
 
+  match '/masonry', :to => redirect('/public/masonry.html')
 end

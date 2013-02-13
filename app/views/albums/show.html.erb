@@ -10,7 +10,7 @@
   <%= @album.user.name %>
 </p>
 
-<div id="masonry-container" class="fluid  clearfix">
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
   <% i = 0 %>
   <% @album.images.each do |image| %>
     <div class="box">

@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.backstretch.min
+//= require jquery.masonry
+//= require jquery.event-drag
 //= require_tree .
