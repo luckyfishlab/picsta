@@ -1,4 +1,5 @@
 class SharesController < ApplicationController
+  before_filter :authenticate_user!
   def create
     @album = Album.find(params[:share][:album_id])
     @user = User.find(params[:share][:user_id])

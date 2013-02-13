@@ -1,3 +1,4 @@
+require 'pp'
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
@@ -5,6 +6,7 @@ class UsersController < ApplicationController
     Power.current = Power.new(current_user)
     if Power.current.is_admin == true
       @users = end_of_association_chain.all
+      @roles = Role.all
       respond_to do |format|
         format.html # index.html.erb
       end
@@ -32,8 +34,7 @@ class UsersController < ApplicationController
     Power.current = Power.new(current_user)
     if Power.current.is_admin == true
       @user = User.find(params[:id])
-      if true #@user.update_attributes(params[:user], :as => :admin)
-        puts params[:user]
+      if @user.update_attributes(params[:user])
         redirect_to users_path, :notice => "User updated."
       else
         redirect_to users_path, :alert => "Unable to update user."
