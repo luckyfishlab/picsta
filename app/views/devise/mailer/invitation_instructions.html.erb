@@ -1,6 +1,6 @@
 <p>Hello <%= @resource.email %>!</p>
 
-<p>I want to share my creation with you. You're invited to join <%= root_url %>, you can accept it through the link below.</p>
+<p>Dana Spisak has invited to join <%= link_to "Picsta", "http://picsta.co" %>, you can accept it through the link below.</p>
 
 <p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 

@@ -1,6 +1,6 @@
 ### GIVEN ###
 Given /^I want to add images to the album$/ do
-  click_link "Add Images"
+  first(:link, "Add Images").click
 end
 
 Given /^I click on the image$/ do

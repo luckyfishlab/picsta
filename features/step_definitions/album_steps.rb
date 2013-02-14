@@ -12,7 +12,7 @@ end
 Given /^I share the album "(.*?)" with "(.*?)"$/ do |arg1, arg2|
   visit '/albums'
   click_link arg1
-  click_link "Share Album"
+  first(:link, "Share Album").click
   select(arg2, :from => "User")
   click_button "Share"
 end
