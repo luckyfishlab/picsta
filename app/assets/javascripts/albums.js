@@ -1,6 +1,7 @@
 $(window).load(function(){
 
 		jQuery("#masonry-container").masonry({
-			itemSelector: '.box'
+			itemSelector: '.box',
+            columnWidth: 10
 		});
 });

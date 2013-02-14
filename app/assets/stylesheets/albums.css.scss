@@ -2,13 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .box {
-  width: 240px;
+  width: 220px;
    margin: 10px;
    float: left;
 }
 
 #masonry-container {
-  background: #FFF;
+  /*background: #FFF; */
+  background: url(/assets/cream_dust.png) repeat 0 0;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;

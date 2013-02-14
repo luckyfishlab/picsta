@@ -7,27 +7,28 @@ body {
   overflow-y: scroll;
 }
 
-#container {
+#masonry-container {
   background: #FFF;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;
   clear: both;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  /*-webkit-border-radius: 5px;*/
+     /*-moz-border-radius: 5px;*/
+          /*border-radius: 5px;*/
 }
 
 .box {
   margin: 5px;
   padding: 5px;
-  background: #D8D5D2;
+  background: #FFF;
   font-size: 11px;
   line-height: 1.4em;
   float: left;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  /*-webkit-border-radius: 5px;*/
+     /*-moz-border-radius: 5px;*/
+          /*border-radius: 5px;*/
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
 .box h2 {

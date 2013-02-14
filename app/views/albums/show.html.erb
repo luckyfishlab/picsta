@@ -9,7 +9,8 @@
   <b>User:</b>
   <%= @album.user.name %>
 </p>
-
+<%= toolbar_helper(@album) %>
+<%= link_to 'Back', albums_path %>
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
   <% i = 0 %>
   <% @album.images.each do |image| %>
@@ -20,6 +21,5 @@
 </div>
 
 <%= toolbar_helper(@album) %>
-
 <%= link_to 'Back', albums_path %>
 
