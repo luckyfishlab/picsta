@@ -1,0 +1,22 @@
+<div id="share-options-<%= share.id %>" class="modal" style="display: none;">
+  <%= simple_form_for share, :url => share_path(share), :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&#215;</a>
+        <h3>Email Notices</h3>
+     </div>
+      <div class="modal-body">
+        <!--
+        <label class="checkbox">
+          <input type="checkbox"> You agree to receive email notifications at <%= current_user.email %> when new images have been to the album
+        </label>
+        -->
+        <%= f.input :email_notice, :label => "You want a email notifications when images are added to the album", :as => :boolean, :value => true %>
+        <p>Email notices will only be sent a few times a week. We don't want to overwhelm you.</p>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "OK", :class => "btn" %>
+        <!-- <a class="btn" data-dismiss="modal" href="#">OK</a> -->
+        <a class="btn" data-dismiss="modal" href="#">Cancel</a>
+      </div>
+  <% end %>
+</div>

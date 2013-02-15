@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211200439) do
+ActiveRecord::Schema.define(:version => 20130215181721) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(:version => 20130211200439) do
   create_table "shares", :force => true do |t|
     t.integer  "album_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "email_notice"
   end
 
   add_index "shares", ["album_id", "user_id"], :name => "index_shares_on_album_id_and_user_id", :unique => true

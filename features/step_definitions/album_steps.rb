@@ -1,4 +1,15 @@
 
+Given /^An album is shared with "(.*?)"$/ do |arg1|
+  steps %{
+    And I am logged in as "#{arg1}" as a "viewer"
+    And I sign out
+    And I am logged in as "Steve" as a "subscriber"
+    And I create the album "my album"
+    And I share the album "my album" with "#{arg1}"
+    And I sign out
+  }
+end
+
 
 Given /^I create the album "(.*?)"$/ do |arg1|
   visit '/albums'

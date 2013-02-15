@@ -57,6 +57,9 @@
                <% end %>
                <p><%= link_to share.album.title, share.album %> shared by <%= share.album.user.name %></p>
                <p><%= share.album.images.count %> image(s)</p>
+               <a data-toggle="modal" href="#share-options-<%= share.id %>" class="btn btn-mini" type="button">Subscribe</a>
+               <%= render share %>
+
              </div>
         </li>
     <% end %>

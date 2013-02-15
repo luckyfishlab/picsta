@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         format.html # index.html.erb
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:alert] = "Access not available"
       redirect_to root_path
     end
   end
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         format.html # show.html.erb
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:alert] = "Access not available"
       redirect_to root_path
     end
   end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
         redirect_to users_path, :alert => "Unable to update user."
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:alert] = "Access not available"
       redirect_to root_path
     end
   end

@@ -22,7 +22,7 @@ Picsta::Application.routes.draw do
 
 
   resources :users
-  resources :shares, only: [:create, :destroy]
+  resources :shares, only: [:create, :destroy, :update]
   resources :images
 
   get "static_pages/home"
