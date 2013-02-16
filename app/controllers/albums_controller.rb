@@ -57,6 +57,7 @@ class AlbumsController < ApplicationController
     if Power.current.is_subscriber or Power.current.is_admin
       @album = Album.new(params[:album])
       @album.user_id= current_user.id
+
       respond_to do |format|
         if @album.save
           format.html { redirect_to @album, notice: 'Album was successfully created.' }

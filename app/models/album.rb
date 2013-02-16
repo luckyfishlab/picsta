@@ -5,16 +5,11 @@ class Album < ActiveRecord::Base
   has_many :shares, dependent: :destroy
   has_many :allowed_viewers, through: :shares, source: :user
   has_many :images
-
-
-  ### TODO : this model should have something about handling
-  ### the share table when we destroy an album.
+  has_one :album_stat, dependent: :destroy
 
   def create_share!(user)
     shares.create!( user_id: user.id)
   end
-
-
 
   def destroy_share!(user)
     shares.find_by_user_id(user.id).destroy

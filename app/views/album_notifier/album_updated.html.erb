@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h2>New pictures were added to the album <%= @album.title %>.</h2>
+<p>
+  You can find them here: <%= link_to @album.title, album_url(@album) %>
+</p>
+<p>
+  Please login and enjoy!
+</p>
+<p>Regards,<br/>
+Dana<br/> </p>
+<b>Picsta</b><br/><em>Share with your family.</em>
+</body>
+</html>
