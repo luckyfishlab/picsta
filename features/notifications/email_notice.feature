@@ -10,3 +10,12 @@ Feature: Email notice
     When I click subscribe
     Then I see a successful subscribe message
 
+  Scenario: Subscriber gets an email
+    Given An album is shared with "Joe"
+    Given I sign in as "Joe"
+      And I list albums
+      And I click subscribe
+     When An image is added to a shared album
+      And Album email notifications are processed
+    Then "joe@example.com" should receive 1 emails
+

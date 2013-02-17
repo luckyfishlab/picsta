@@ -2,7 +2,7 @@
 # It is meant to be started from a rake task in the running context.
 class NotificationManager
 
-  def create_mail_list (album_list)
+  def create_album_subscriber_list (album_list)
     album_list.each do |album_h|
       album_h[:subscribers] = []
       album = Album.find(album_h[:album_id])
@@ -40,6 +40,18 @@ class NotificationManager
     albums_list
   end
 
+  def create_mail_list (albums_list)
+    undelivered_email_list = []
+    albums_list.each do |album_h|
+      album_id = album_h[:album_id]
+      album_h[:subscribers].each do |user_id|
+        undelivered_email_list << AlbumNotifier.album_updated(user_id, album_id)
+      end
+    end
+    undelivered_email_list
+  end
+
+
   def update_album_stat_records (updated_albums)
     updated_albums.each do |album_h|
       album = Album.find(album_h[:album_id])
@@ -47,6 +59,16 @@ class NotificationManager
       album.album_stat.save!
     end
   end
+
+  def process
+    updated_albums = create_updated_albums_list
+    updated_albums = create_album_subscriber_list(updated_albums)
+    undelivered_email = create_mail_list(updated_albums)
+    pp updated_albums
+    undelivered_email.each { |email| email.deliver }
+    update_album_stat_records(updated_albums)
+  end
+
 
   def self.migrate
     Album.all.each do |album|

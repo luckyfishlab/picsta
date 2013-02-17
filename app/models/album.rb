@@ -6,6 +6,7 @@ class Album < ActiveRecord::Base
   has_many :allowed_viewers, through: :shares, source: :user
   has_many :images
   has_one :album_stat, dependent: :destroy
+  after_create :create_album_stat
 
   def create_share!(user)
     shares.create!( user_id: user.id)

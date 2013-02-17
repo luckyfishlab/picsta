@@ -10,6 +10,16 @@ Given /^An album is shared with "(.*?)"$/ do |arg1|
   }
 end
 
+When /^An image is added to a shared album$/ do
+  steps %{
+    And I sign out
+    And I sign in as "Steve"
+    And I visit the album "my album"
+    And I want to add images to the album
+    And I upload an image
+    And I sign out
+  }
+end
 
 Given /^I create the album "(.*?)"$/ do |arg1|
   visit '/albums'
@@ -30,7 +40,9 @@ end
 
 Given /^I visit the album "(.*?)"$/ do |arg1|
   visit '/albums'
-  click_link arg1
+  #click_link arg1
+  first(:link, arg1).click
+
 end
 
 
