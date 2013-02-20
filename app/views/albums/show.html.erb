@@ -1,19 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @album.title %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @album.user.name %>
-</p>
+<h2><%= @album.title %> shared by <%= @album.user.name %></h2>
 <%= toolbar_helper(@album) %>
 <%= link_to 'Back', albums_path %>
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
   <% i = 0 %>
-  <% @album.images.each do |image| %>
+  <% @album.images.reverse.each do |image| %>
     <div class="box">
       <p><%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), image %></p>
      </div>
