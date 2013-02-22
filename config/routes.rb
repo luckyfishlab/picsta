@@ -1,5 +1,7 @@
 Picsta::Application.routes.draw do
 
+
+
   resources :albums do
     resource :shares, only: [:create, :destroy,:new]
   end
@@ -20,7 +22,7 @@ Picsta::Application.routes.draw do
   end
 
 
-
+  resources :activities
   resources :users
   resources :shares, only: [:create, :destroy, :update]
   resources :images

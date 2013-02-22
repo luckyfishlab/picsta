@@ -1,4 +1,7 @@
 class Album < ActiveRecord::Base
+  include PublicActivity::Common
+
+
   attr_accessible :title, :user_id
 
   belongs_to :user

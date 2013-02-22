@@ -14,13 +14,13 @@ Feature: Manage Albums
     When I select the album
     Then I should see the album contents
 
-  Scenario: Joe can not access Steve's albums
+  Scenario: Joe can access Steve's albums
     Given I am logged in as "Steve" as a "subscriber"
     Given I create the album "Test Album"
      And I sign out
      And I am logged in as "Joe" as a "viewer"
-    When I try the last URL
-    Then I should see an error
+    When I list albums
+    Then I should see the album "Test Album"
 
   Scenario: Steve allows Joe to see an album
     Given I am logged in as "Joe" as a "viewer"

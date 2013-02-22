@@ -9,6 +9,8 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(params[:image])
     if @image.save
+      @image.create_activity :create, owner: current_user
+
       flash[:notice] = "The image was saved successfully."
       redirect_to @image.album
     else
@@ -33,19 +35,16 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    Power.current = Power.new(current_user)
-    #Power.current.albums
-    
     @image = Image.find(params[:id])
     album = @image.album
-    if Power.current.albums.include?(album)
-      @image.destroy
-      flash[:notice] = "The image was successfully removed."
-      redirect_to album
-    else
-      flash[:notice] = "You don't have permission to delete this image."
-      redirect_to @image
-    end
+    @image.create_activity :destroy, owner: current_user
+
+    @image.destroy
+
+
+    flash[:notice] = "The image was successfully removed."
+    redirect_to album
+
       
   end
 

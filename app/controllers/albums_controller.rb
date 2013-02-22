@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    if Power.current.is_subscriber or Power.current.is_admin
+    if true #Power.current.is_subscriber or Power.current.is_admin
       @album = Album.new
 
       respond_to do |format|
@@ -39,7 +39,7 @@ class AlbumsController < ApplicationController
         format.json { render json: @album }
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:warn] = "Access not available"
 
       redirect_to root_path
     end
@@ -60,6 +60,7 @@ class AlbumsController < ApplicationController
 
       respond_to do |format|
         if @album.save
+          @album.create_activity :create, owner: current_user
           format.html { redirect_to @album, notice: 'Album was successfully created.' }
           format.json { render json: @album, status: :created, location: @album }
         else
@@ -68,7 +69,7 @@ class AlbumsController < ApplicationController
         end
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:warn] = "Access not available"
       redirect_to root_path
     end
 
@@ -78,7 +79,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1.json
   def update
     @album = end_of_association_chain.find(params[:id])
-
+    @album.create_activity :update, owner: current_user
     respond_to do |format|
       if @album.update_attributes(params[:album])
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
@@ -94,7 +95,9 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1.json
   def destroy
     @album = end_of_association_chain.find(params[:id])
+    @album.create_activity :destroy, owner: current_user
     @album.destroy
+
 
     respond_to do |format|
       format.html { redirect_to albums_url }
