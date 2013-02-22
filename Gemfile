@@ -55,3 +55,4 @@ gem 'public_activity'
 gem 'rename'
 
 gem 'newrelic_rpm'
+gem 'net-scp', "= 1.0.4"
