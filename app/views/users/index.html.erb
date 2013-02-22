@@ -5,6 +5,7 @@
   <tr>
     <th>Name</th>
     <th>Signed up</th>
+    <th>Last login</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,6 +15,7 @@
   <tr>
     <td><%= link_to user.name, user %></td>
     <td><%= user.created_at.to_date %></td>
+    <td><%= user.last_sign_in_at.to_date %></td>
     <td><%= link_to 'Show', user %></td>
     <td>
             <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Edit</a>
