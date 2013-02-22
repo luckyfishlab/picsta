@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    if Power.current.is_subscriber or Power.current.is_admin
+    if true #Power.current.is_subscriber or Power.current.is_admin
       @album = Album.new
 
       respond_to do |format|
@@ -39,7 +39,7 @@ class AlbumsController < ApplicationController
         format.json { render json: @album }
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:warn] = "Access not available"
 
       redirect_to root_path
     end
@@ -68,7 +68,7 @@ class AlbumsController < ApplicationController
         end
       end
     else
-      flash[:notice] = "Access not available"
+      flash[:warn] = "Access not available"
       redirect_to root_path
     end
 

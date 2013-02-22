@@ -33,19 +33,13 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    Power.current = Power.new(current_user)
-    #Power.current.albums
-    
     @image = Image.find(params[:id])
     album = @image.album
-    if Power.current.albums.include?(album)
-      @image.destroy
-      flash[:notice] = "The image was successfully removed."
-      redirect_to album
-    else
-      flash[:notice] = "You don't have permission to delete this image."
-      redirect_to @image
-    end
+
+    @image.destroy
+    flash[:notice] = "The image was successfully removed."
+    redirect_to album
+
       
   end
 

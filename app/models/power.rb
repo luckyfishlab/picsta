@@ -6,7 +6,7 @@ class Power
   end
 
   power :albums do
-    Album.where(:user_id => @user.id)
+    Album #.where(:user_id => @user.id)
   end
 
   power :users do
@@ -51,15 +51,6 @@ class Power
 
   power :readable_album  do |album_id|
     album = Album.find(album_id)
-    if album.user_id == @user.id
-      album
-    else
-      allowed = album.allowed_viewers.map(&:id)
-      if allowed.include? @user.id
-        album
-      else
-        nil
-      end
-    end
+    album
   end
 end

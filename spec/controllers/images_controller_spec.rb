@@ -67,18 +67,6 @@ describe ImagesController do
       response.should redirect_to(album_path)
     end
 
-    it "sets a flash[:notice] message for failure" do
-      image = mock_model(Image).as_null_object
-      album = mock_model(Album).as_null_object
-
-      Image.stub(:find).with(image.id.to_s).and_return(image)
-      Image.stub(:destroy).and_return(true)
-
-      delete :destroy, :id=> image
-      flash[:notice].should eq("You don't have permission to delete this image.")
-    end
-
-
   end
   describe "GET index" do
     before(:each) do
