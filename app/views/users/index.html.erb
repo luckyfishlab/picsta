@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Signed up</th>
     <th>Last login</th>
+    <th>Invited by</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +17,9 @@
     <td><%= link_to user.name, user %></td>
     <td><%= user.created_at.to_date %></td>
     <td><%= user.last_sign_in_at.to_date %></td>
+    <td><%= User.where(:id => user.invited_by_id).first.name if user.invited_by_id %></td>
     <td><%= link_to 'Show', user %></td>
+
     <td>
             <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Edit</a>
             <%= render user %>
