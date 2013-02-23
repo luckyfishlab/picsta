@@ -1,19 +1,58 @@
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-<% @albums.each do |album| %>
 
-   <div class="box">
-      <% image = album.images.first %>
-      <% unless image.nil? %>
-          <%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), album, :class=>"centered" %>
-      <% end %>
-      <p><%= link_to album.title, album %> shared by <%= album.user.name %></p>
-      <p><%= album.images.count %> image(s)</p>
-
+<div class="row">
+    <div class="span4">
+      <div class="marketing-content">
+        <h3>Share</h3>
+          <p>Share and save your family's memories by creating an album now. </p>
+          <p><%= link_to 'New Album', new_album_path, :class=>"btn btn-small btn-primary" %></p>
+      </div>
     </div>
-
-<% end %>
+    <div class="span4">
+      <div class="marketing-content">
+      <h3>Family</h3>
+      <p>Invite other family members.</p>
+      <p><%= link_to 'Invite Users', new_user_invitation_path, :class=>"btn btn-small btn-primary" %></p>
+      </div>
+    </div>
+    <!--
+    <div class="span4">
+      <div class="marketing-content">
+      <h3>Feedback</h3>
+      <p>Have a suggestion? Tell us what you think by providing feedback here.</p>
+        <p><%= link_to 'Leave Feedback', "#", :class=>"btn btn-small btn-primary" %></p>
+        </div>
+    </div>
+    -->
 </div>
 
+<div class="row">
+    <div class="span12">
+        <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+            <% @albums.each do |album| %>
+               <div class="box">
+                  <% image = album.images.first %>
+                  <% unless image.nil? %>
+                      <%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), album, :class=>"centered" %>
+                  <% end %>
+
+                  <p><%= link_to album.title, album %>
+                  <% unless album.user.nil? or album.user.name.nil? %>
+                        shared by <%= album.user.name %>
+                    <% end %>
+                  </p>
+                  <p><%= album.images.count %> image(s)</p>
+                  <div class="btn-group">
+                     <button class="btn btn-mini btn-primary"><%= link_to 'Show', album %></button>
+                     <button class="btn btn-mini btn-primary"><%= link_to 'Edit', edit_album_path(album) %></button>
+                     <button class="btn btn-mini btn-primary"><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                 </div>
+
+                </div>
+
+            <% end %>
+        </div>
+    </div>
+</div>
 
 
 
