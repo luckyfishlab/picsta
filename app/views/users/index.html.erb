@@ -16,7 +16,7 @@
   <tr>
     <td><%= link_to user.name, user %></td>
     <td><%= user.created_at.to_date %></td>
-    <td><%= user.last_sign_in_at.to_date %></td>
+    <td><%= user.current_sign_in_at.to_date %></td>
     <td><%= User.where(:id => user.invited_by_id).first.name if user.invited_by_id %></td>
     <td><%= link_to 'Show', user %></td>
 
