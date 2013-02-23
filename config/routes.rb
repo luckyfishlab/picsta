@@ -33,5 +33,8 @@ Picsta::Application.routes.draw do
   match '/about' => 'static_pages#about'
   match '/privacy_policy' => 'static_pages#privacy'
 
-  match '/masonry', :to => redirect('/public/masonry.html')
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
+
+
 end
