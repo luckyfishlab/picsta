@@ -8,7 +8,8 @@ Picsta::Application.routes.draw do
 
 
   authenticated :user do
-    root :to => 'albums#index'
+    root :to => "home#index"
+    #root :to => 'albums#index'
   end
   root :to => "home#index"
 
