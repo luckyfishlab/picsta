@@ -1,44 +1,18 @@
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+<% @albums.each do |album| %>
 
-<div class="row">
+   <div class="box">
+      <% image = album.images.first %>
+      <% unless image.nil? %>
+          <%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), album, :class=>"centered" %>
+      <% end %>
+      <p><%= link_to album.title, album %> shared by <%= album.user.name %></p>
+      <p><%= album.images.count %> image(s)</p>
 
+    </div>
 
-  <div class="row">
-      <div class="span6 offset4">
-        <h3>Albums</h3>
-        <% @albums.each do |album| %>
-            <% image = album.images.first %>
-            <div class="media">
-              <a class="pull-left" href="<%= url_for album  %>">
-                <% unless image.nil? %>
-                <img class="media-object" src="<%= image.pic_url(:thumb) %>">
-                <% end %>
-              </a>
-              <div class="media-body">
-                <div class="media-heading">
-                <%= link_to album.title, album %>
-                </div>
-                <p><%= album.images.count %> image(s)</p>
-                <p>
-                    <div class="btn-group">
-                      <button class="btn"><%= link_to 'Show', album %></button>
-                      <button class="btn"><%= link_to 'Edit', edit_album_path(album) %></button>
-                      <button class="btn"><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                    </div>
-                </p>
-              </div>
-            </div>
-        <% end %>
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="span2 offset5">
-    <p><%= link_to 'New Album', new_album_path, :class=>"btn" %></p>
-      </div>
-  </div>
-
+<% end %>
 </div>
-
 
 
 
