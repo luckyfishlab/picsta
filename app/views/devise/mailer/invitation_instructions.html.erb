@@ -1,12 +1,13 @@
 <p>Hello <%= @resource.email %>!</p>
 
-<p>Dana Spisak has invited to join <%= link_to "Picsta", "http://picsta.co" %>, you can accept it through the link below.</p>
+<p><%= @resource.invited_by_name %> has invited you to join <%= link_to "Picsta", "http://picsta.co" %>, you can accept it through the link below.</p>
 
 <p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
-<p>I built this site because I wanted a single place I could share pictures independent of social networks. This site is owned and operated by Dana Spisak.</p>
+<p>Dana Spisak built this site to create and share a family album independent of social networks.</p>
 
-<p>If you don't want to accept the invitation, please ignore this email. Keep in mind you'll be breaking my heart.<br />
-Your account won't be created until you access the link above and set your password.</p>
-
+<p>If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.</p>
+<p>Feel free to send me an email if you have any questions or concerns at: dana@picsta.co</p>
+<p>Regards,<br/>
+Dana Spisak</p>
 

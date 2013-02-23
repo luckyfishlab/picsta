@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PublicActivity::Common
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,9 +16,17 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :roles, :through => :memberships
 
+  def invited_by_name
+    u = User.find(invited_by_id)
+    if u.nil?
+      'a user which is no longer active'
+    else
+      if u.name.nil?
+        u.email
+      else
+        u.name
+      end
+    end
 
-  #def visible
-  #     where("roles.name = ?", :admin)
-  #end
-
+  end
 end

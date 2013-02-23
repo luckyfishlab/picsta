@@ -4,6 +4,9 @@
     <li>
       <%= link_to 'Albums', albums_path %>
     </li>
+    <li class="text-success">
+      <%= link_to 'Invite Users', new_user_invitation_path %>
+    </li>
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
