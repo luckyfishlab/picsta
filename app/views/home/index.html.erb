@@ -4,7 +4,19 @@
 
 </div>
 
+<% if user_signed_in? %>
+    <div class="activity-container">
+      <% @activities.each do |activity| %>
+          <div class="well activity">
+            <p class="muted"><%= distance_of_time_in_words_to_now activity.created_at %> ago</p>
+            <strong><%= activity.owner.name if activity.owner %></strong>
+            <%= render_activity activity %>
+          </div>
+      <% end %>
 
+    </div>
+
+<% end %>
 
 
 
