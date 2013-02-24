@@ -21,15 +21,3 @@ Feature: Manage Albums
      And I am logged in as "Joe" as a "viewer"
     When I list albums
     Then I should see the album "Test Album"
-
-  Scenario: Steve allows Joe to see an album
-    Given I am logged in as "Joe" as a "viewer"
-    And I sign out
-    Given I am logged in as "Steve" as a "subscriber"
-    Given I create the album "Family Album"
-    And I share the album "Family Album" with "Joe"
-    And I sign out
-    And I sign in as "Joe"
-    When I list albums
-    Then I should see the album "Family Album"
-

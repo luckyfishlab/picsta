@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222212222) do
+ActiveRecord::Schema.define(:version => 20130224205231) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -64,18 +64,6 @@ ActiveRecord::Schema.define(:version => 20130222212222) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "shares", :force => true do |t|
-    t.integer  "album_id"
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "email_notice"
-  end
-
-  add_index "shares", ["album_id", "user_id"], :name => "index_shares_on_album_id_and_user_id", :unique => true
-  add_index "shares", ["album_id"], :name => "index_shares_on_album_id"
-  add_index "shares", ["user_id"], :name => "index_shares_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false

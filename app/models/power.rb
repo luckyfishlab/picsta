@@ -46,11 +46,8 @@ class Power
 
 
   power :updatable_albums do
-    Album.where(:user_id => @user.id)
+    Album #.where(:user_id => @user.id)
   end
 
-  power :readable_album  do |album_id|
-    album = Album.find(album_id)
-    album
-  end
+
 end

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids
 
   has_many :albums
-  has_many :shares
+
 
   has_many :memberships
   has_many :roles, :through => :memberships

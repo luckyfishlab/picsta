@@ -4,9 +4,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @user = current_user
     @albums = end_of_association_chain.all
-    @shares = Share.where(:user_id => @user)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
@@ -16,7 +14,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
-    @album = readable_album(params[:id])
+    @album = end_of_association_chain.find(params[:id])
     if @album
       respond_to do |format|
         format.html # show.html.erb
@@ -31,17 +29,11 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    if true #Power.current.is_subscriber or Power.current.is_admin
-      @album = Album.new
+    @album = end_of_association_chain.new
 
-      respond_to do |format|
-        format.html # new.html.erb
-        format.json { render json: @album }
-      end
-    else
-      flash[:warn] = "Access not available"
-
-      redirect_to root_path
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @album }
     end
 
   end
@@ -54,24 +46,20 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    if Power.current.is_subscriber or Power.current.is_admin
-      @album = Album.new(params[:album])
-      @album.user_id= current_user.id
+    @album = end_of_association_chain.new(params[:album])
+    @album.user_id= current_user.id
 
-      respond_to do |format|
-        if @album.save
-          @album.create_activity :create, owner: current_user
-          format.html { redirect_to @album, notice: 'Album was successfully created.' }
-          format.json { render json: @album, status: :created, location: @album }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @album.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @album.save
+        @album.create_activity :create, owner: current_user
+        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.json { render json: @album, status: :created, location: @album }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
       end
-    else
-      flash[:warn] = "Access not available"
-      redirect_to root_path
     end
+
 
   end
 
@@ -105,10 +93,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def readable_album id
-    Power.current = Power.new(current_user)
-    Power.current.readable_album id
-  end
   def end_of_association_chain
     Power.current = Power.new(current_user)
     Power.current.albums

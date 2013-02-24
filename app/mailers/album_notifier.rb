@@ -13,6 +13,7 @@ class AlbumNotifier < ActionMailer::Base
     @album = Album.find(album_id)
 
     mail(:to =>@user.email, :from => @from, :subject => "New pictures were added")
-
+    headers['X-MC-GoogleAnalytics'] = "picsta.co"
+    headers['X-MC-Tags'] = "album_update"
   end
 end
