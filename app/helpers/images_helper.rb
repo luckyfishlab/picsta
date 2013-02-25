@@ -55,6 +55,7 @@ module ImagesHelper
     album = record.album
     if Power.current.albums.include?(album)
       ret_text << "#{link_to "Remove", @image, :confirm => 'Are you sure?', :method => :delete} | "
+      ret_text << "#{link_to "Make Album Cover", album_path(@image.album), :method => :post, :image_id => @image.id } | "
     end
     ret_text.html_safe
   end

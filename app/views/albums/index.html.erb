@@ -29,7 +29,7 @@
         <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
             <% @albums.each do |album| %>
                <div class="box">
-                  <% image = album.images.first %>
+                  <% image = album.get_album_cover %>
                   <% unless image.nil? %>
                       <%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), album, :class=>"centered" %>
                   <% end %>

@@ -5,5 +5,7 @@
 <%= image_tag @image.pic_url(:web) if @image.pic? %>
 <div class="actions">
    <%= link_to 'Remove', @image, :confirm => 'Are you sure?', :method => :delete %> |
-   <%= link_to 'Back', album_path(@image.album_id) %> 
+   <%= link_to "Make Album Cover", album_path(@image.album, :album => {:image_id => @image.id}), :method => :put %> |
+
+   <%= link_to 'Back', album_path(@image.album_id) %>
  </div>
