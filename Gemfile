@@ -44,6 +44,9 @@ gem "assignable_values"
 
 #gem 'masonry-rails', :git => 'git://github.com/kristianmandrup/masonry-rails.git'
 
+#pagination
+gem "kaminari"
+
 # Support for images, s3
 gem "carrierwave", '~> 0.8.0'
 #gem "rmagick", '~> 2.13.2'

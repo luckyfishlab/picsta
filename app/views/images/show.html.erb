@@ -11,7 +11,8 @@
     <%= image_tag @image.pic_url(:web) if @image.pic? %>
   </div>
   <div class="span2">
-    <h4>Controls</h4>
+
+    <h4>Actions</h4>
     <div class="actions">
       <ul>
        <li><%= link_to 'Back to Album', album_path(@image.album_id) %></li>
@@ -20,6 +21,7 @@
        <li><%= link_to 'Remove Image', @image, :confirm => 'Are you sure?', :method => :delete %></li>
       </ul>
     </div>
+
   </div>
 </div>
 <div class="row container">

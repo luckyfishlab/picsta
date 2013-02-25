@@ -13,6 +13,9 @@ module ImagesHelper
     </ul>
 =end
 
+    previous_text = 'Earlier'
+    next_text = 'Later'
+
 
     ret_text = '<ul class="pager">'
     prev_image = image.previous
@@ -25,9 +28,9 @@ module ImagesHelper
           ret_text << '">'
     end
     if prev_image
-    ret_text << "#{link_to 'Previous', image_path(prev_image)}"
+    ret_text << "#{link_to previous_text, image_path(prev_image)}"
     else
-      ret_text << "#{link_to 'Previous', '#'}"
+      ret_text << "#{link_to previous_text, '#'}"
     end
     ret_text << '</li>'
 
@@ -38,9 +41,9 @@ module ImagesHelper
       ret_text << '">'
     end
     if next_image
-      ret_text << "#{link_to 'Next', image_path(next_image)}"
+      ret_text << "#{link_to next_text, image_path(next_image)}"
     else
-      ret_text << "#{link_to 'Next', '#'}"
+      ret_text << "#{link_to next_text, '#'}"
 
     end
 
