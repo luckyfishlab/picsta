@@ -1,9 +1,11 @@
 <div class="hero-unit">
   <h1>Picsta</h1>
 <lead>Share with your family and friends.</lead>
-<% if user_signed_in? %>
+  <% if user_signed_in? %>
     <p><%= link_to 'View Albums', albums_path, :class=>"btn btn-large btn-primary" %></p>
-<% end %>
+  <% else %>
+    <p><%= link_to 'Login', new_user_session_path, :class=>"btn btn-large btn-primary"  %></p>
+  <% end %>
 </div>
 
 <% if user_signed_in? %>
