@@ -9,6 +9,10 @@ class Power
     Album #.where(:user_id => @user.id)
   end
 
+  power :images do
+    Image
+  end
+
   power :users do
     if self.is_admin == true
       User

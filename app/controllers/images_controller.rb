@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(params[:image])
+    @image = end_of_association_chain.new(params[:image])
     if @image.save
       @image.create_activity :create, owner: current_user
 
@@ -19,15 +19,11 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
-
-    Power.current = Power.new(current_user)
-
+    @image = end_of_association_chain.find(params[:id])
   end
 
   def new
-
-    @image = Image.new(:album_id => params[:album_id])
+    @image = end_of_association_chain.new(:album_id => params[:album_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,18 +31,20 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
+    @image = end_of_association_chain.find(params[:id])
     album = @image.album
     @image.create_activity :destroy, owner: current_user
 
     @image.destroy
 
-
     flash[:notice] = "The image was successfully removed."
     redirect_to album
 
-      
   end
 
+  def end_of_association_chain
+    Power.current = Power.new(current_user)
+    Power.current.images
+  end
 
 end
