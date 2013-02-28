@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_accessible :role_ids
 
+  validates_with PostInviteValidator, :fields => [:name]
   has_many :albums
 
 
@@ -30,3 +31,4 @@ class User < ActiveRecord::Base
 
   end
 end
+
