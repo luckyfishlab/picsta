@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    Power.current = Power.new(current_user)
-    if Power.current.is_admin == true
+    if current_power.is_admin == true
       @users = end_of_association_chain.all
       @roles = Role.all
       respond_to do |format|
@@ -16,8 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    Power.current = Power.new(current_user)
-    if Power.current.is_admin == true
+
+    if current_power.is_admin == true
       @user = end_of_association_chain.find(params[:id])
       respond_to do |format|
         format.html # show.html.erb
@@ -29,8 +28,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    Power.current = Power.new(current_user)
-    if Power.current.is_admin == true
+
+    if current_power.is_admin == true
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
         redirect_to users_path, :notice => "User updated."
@@ -45,8 +44,7 @@ class UsersController < ApplicationController
 
 
   def end_of_association_chain
-    #Power.current ||= Power.new(current_user)
-    Power.current.users
+    current_power.users
   end
 
 

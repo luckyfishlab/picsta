@@ -18,11 +18,7 @@ class Power
   end
 
   power :users do
-    if self.is_admin == true
-      User
-    else
-      nil
-    end
+    User if is_admin?
   end
 
   power :is_subscriber do
@@ -40,7 +36,6 @@ class Power
         true
       else
         false
-
       end
     else
       roles = @user.roles.where(:name => :admin)
