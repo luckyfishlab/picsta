@@ -1,8 +1,14 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
+  include Consul::Controller
   protect_from_forgery
 
   rescue_from ActiveRecord::RecordNotFound, :with => :access_denied
+
+  current_power do
+    Power.new(current_user)
+  end
+
 
   protected
 
@@ -12,3 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
 end
+
+
+

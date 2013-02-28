@@ -43,8 +43,7 @@ class ImagesController < ApplicationController
   end
 
   def end_of_association_chain
-    Power.current = Power.new(current_user)
-    Power.current.images
+   current_power.images
   end
 
 end

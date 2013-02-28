@@ -94,8 +94,7 @@ class AlbumsController < ApplicationController
   end
 
   def end_of_association_chain
-    Power.current = Power.new(current_user)
-    Power.current.albums
+    current_power.albums
   end
 
 end

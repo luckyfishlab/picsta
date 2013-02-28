@@ -1,6 +1,10 @@
 class Power
   include Consul::Power
 
+
+  # This is called from application_controller.rb
+  # and is available as "current_power" or Power.current while
+  # the request is being served
   def initialize(user)
     @user = user
   end
