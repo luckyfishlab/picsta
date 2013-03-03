@@ -61,3 +61,7 @@ gem 'newrelic_rpm'
 gem 'net-scp', "= 1.0.4"
 # Mailchimp
 gem 'gibbon'
+
+# Billing
+gem "stripe", ">= 1.7.4"
+gem "stripe_event", ">= 0.4.0"

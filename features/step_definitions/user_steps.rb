@@ -51,6 +51,8 @@ def create_user
   create_visitor
   delete_user
   @user = FactoryGirl.create(:user, @visitor)
+  @role = FactoryGirl.create(:silver_role)
+  @role.create_membership!(@user)
 end
 
 def delete_user
@@ -190,6 +192,11 @@ When /^I look at the list of users$/ do
   visit '/'
 end
 
+When /^I follow the subscribe for silver path$/ do
+  visit '/users/sign_up?plan=silver'
+end
+
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -246,4 +253,16 @@ end
 Then /^I should see my name$/ do
   create_user
   page.should have_content @user[:name]
+end
+
+Then /^I should see "(.*?)"$/ do |text|
+  page.should have_content text
+end
+
+Then /I should be on the new silver user registration page$/ do
+  current_path_with_args.should == '/users/sign_up/?plan=silver'
+end
+
+Then /^I should be on the "([^"]*)" page$/ do |path_name|
+  current_path.should == send("#{path_name.parameterize('_')}_path")
 end

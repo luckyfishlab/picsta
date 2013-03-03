@@ -1,3 +1,8 @@
+Given /^The "(.*?)" role exists$/ do |arg1|
+  @silver_role = FactoryGirl.create(:silver_role)
+end
+
+
 Given /^I am logged in as an admin$/ do
   create_admin_as "admin"
   sign_in_as "admin"
