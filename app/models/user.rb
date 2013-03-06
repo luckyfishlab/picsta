@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  attr_accessible :role_ids
+  attr_accessible :role_ids, :group_ids
 
   validates_with PostInviteValidator, :fields => [:name]
   has_many :albums
@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :roles, :through => :memberships
+
+  has_many :group_users
+  has_many :groups, :through => :group_users
 
   def invited_by_name
     u = User.find(invited_by_id)
