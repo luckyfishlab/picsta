@@ -7,6 +7,9 @@ class Album < ActiveRecord::Base
   belongs_to :user
   has_many :images
   has_one :album_stat, dependent: :destroy
+
+  belongs_to :folder
+
   after_create :create_album_stat
 
   def get_album_cover

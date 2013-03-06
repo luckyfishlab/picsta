@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :group_ids
 
   validates_with PostInviteValidator, :fields => [:name]
+
+  after_create :create_resource_chain
+
   has_many :albums
 
 
@@ -19,6 +22,9 @@ class User < ActiveRecord::Base
 
   has_many :group_users
   has_many :groups, :through => :group_users
+
+
+
 
   def invited_by_name
     u = User.find(invited_by_id)
@@ -32,6 +38,15 @@ class User < ActiveRecord::Base
       end
     end
 
+  end
+
+  private
+  def create_resource_chain
+    # awkward way to say we are a new customer and not an invitation
+    if invitation_token.nil?
+      g = Group.create(:owner_id => id)
+      g.create_group_user! self
+    end
   end
 end
 

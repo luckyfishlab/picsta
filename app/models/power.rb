@@ -9,8 +9,14 @@ class Power
     @user = user
   end
 
+  power :current_group do
+    @user.groups.first
+  end
+
   power :albums do
-    Album #.where(:user_id => @user.id)
+    group_id = @user.groups.first
+    folder = Folder.where(:group_id => group_id).first
+    Album.where(:folder_id => folder.id)
   end
 
   power :images do
@@ -46,7 +52,6 @@ class Power
       end
     end
   end
-
 
   power :updatable_albums do
     Album #.where(:user_id => @user.id)

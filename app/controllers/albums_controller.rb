@@ -47,7 +47,8 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = end_of_association_chain.new(params[:album])
-    @album.user_id= current_user.id
+    @album.user_id = current_user.id
+    @album.group_id = Power.current.current_group
 
     respond_to do |format|
       if @album.save

@@ -4,6 +4,11 @@ class Group < ActiveRecord::Base
   has_many :group_users
   has_many :users, :through => :group_users
 
+  has_one :folder, dependent: :destroy
+
+  after_create :create_folder
+
+
 
   def create_group_user!(user)
     group_users.create!( user_id: user.id, group_id: id)
