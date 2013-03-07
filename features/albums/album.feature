@@ -14,10 +14,14 @@ Feature: Manage Albums
     When I select the album
     Then I should see the album contents
 
-  Scenario: Joe can access Steve's albums
+  Scenario: Invited user can access subscriber's albums
     Given I am logged in as "Steve" as a "subscriber"
     Given I create the album "Test Album"
-     And I sign out
-     And I am logged in as "Joe" as a "viewer"
+    And I invite someone
+    And I sign out
+    And "invited@example.com" opens the email
+    And I follow "Accept invitation" in the email
+    And I register with valid credentials
     When I list albums
     Then I should see the album "Test Album"
+
