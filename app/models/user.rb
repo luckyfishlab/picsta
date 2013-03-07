@@ -47,8 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def create_resource_chain
-    # awkward way to say we are a new customerreturn if email.include?(ENV['ADMIN_EMAIL'])
-    return if email.include?('@example.com') and not Rails.env.production?
+    # awkward way to say we are a new customer
     if invitation_token.nil?
       g = Group.create(:owner_id => id)
       g.create_group_user! self

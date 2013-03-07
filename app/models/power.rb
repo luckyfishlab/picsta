@@ -14,9 +14,11 @@ class Power
   end
 
   power :albums do
-    group_id = @user.groups.first
-    folder = Folder.where(:group_id => group_id).first
-    Album.where(:folder_id => folder.id)
+    group = @user.groups.first
+    unless group.nil?
+      folder = Folder.where(:group_id => group.id).first
+      Album.where(:folder_id => folder.id)
+    end
   end
 
   power :images do
