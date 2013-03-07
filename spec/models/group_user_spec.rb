@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe GroupUser do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be created when a paid_subscriber signs up" do
+
+    expect {
+      user = FactoryGirl.create(:paid_subscriber)
+
+    }.to change(GroupUser, :count).by(1)
+
+  end
 end

@@ -15,4 +15,24 @@ FactoryGirl.define do
     password 'changeme'
     password_confirmation 'changeme'
   end
+
+  factory :paid_subscriber, class: 'User' do
+    name 'Paid User'
+    email 'paid.user@example.com'
+    password 'changeme'
+    password_confirmation 'changeme'
+  end
+
+  factory :controller_test_subscriber, class: 'User' do
+    name 'Paid User'
+    email 'paid.user@example.com'
+    password 'changeme'
+    password_confirmation 'changeme'
+
+    after(:create) { |instance| instance.groups << create_list(:group,1)}
+
+
+  end
+
+
 end

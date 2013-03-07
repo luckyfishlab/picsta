@@ -48,7 +48,7 @@ class AlbumsController < ApplicationController
   def create
     @album = end_of_association_chain.new(params[:album])
     @album.user_id = current_user.id
-    @album.group_id = Power.current.current_group
+    @album.folder_id = Folder.find_by_group_id(Power.current.current_group.id).id
 
     respond_to do |format|
       if @album.save

@@ -2,7 +2,7 @@ class Album < ActiveRecord::Base
   include PublicActivity::Common
 
 
-  attr_accessible :title, :user_id, :image_id
+  attr_accessible :title, :user_id, :image_id, :folder_id
 
   belongs_to :user
   has_many :images

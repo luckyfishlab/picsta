@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :album do
     title "MyString"
     user_id 1
+    folder_id 1
   end
 end

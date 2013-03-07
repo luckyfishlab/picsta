@@ -28,7 +28,7 @@ describe AlbumsController do
   # Album. As you add validations to Album, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "title" => "MyString", "user_id" => 1 }
+    { "title" => "MyString", "user_id" => 1, "folder_id" => 1 }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -176,17 +176,6 @@ describe AlbumsController do
 
     end
 
-    it "does destroy other user's images" do
-      album = Album.create! valid_attributes
-      sign_out @user
-      @user2 = FactoryGirl.create(:user2)
-      sign_in @user2
-      expect {
-        delete :destroy, {:id => album.to_param}, valid_session
-        sign_out @user2
-      }.to change(Album, :count).by(-1)
-
-    end
   end
 
 end

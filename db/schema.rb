@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306045022) do
+ActiveRecord::Schema.define(:version => 20130307044656) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20130306045022) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.integer  "invited_by_group_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

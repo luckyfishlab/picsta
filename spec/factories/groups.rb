@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :group do
-    owner 1
+    owner_id 1
   end
 end

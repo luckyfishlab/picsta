@@ -7,6 +7,11 @@ class InvitationsController < Devise::InvitationsController
     render :new
   end
 
+  # POST /resource/invitation
+  def create
+    params[resource_name][:invited_by_group_id] = current_inviter.groups.first.id unless current_inviter.groups.first.nil?
+    super
+  end
 
   def update
     self.resource = resource_class.accept_invitation!(resource_params)
