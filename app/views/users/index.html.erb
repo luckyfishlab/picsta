@@ -35,27 +35,6 @@
 <% end %>
 </table>
 
-<h3>Groups</h3>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Owner</th>
-    <th># members</th>
-  </tr>
-<% @groups.each do |group| %>
-   <tr>
-     <td><%= group.id %></td>
-     <td><%= User.find(group.owner_id).name %></td>
-     <td>
-     <% GroupUser.find_all_by_group_id(group.id).each do |group_user| %>
-        <%= User.find(group_user.user_id).name.html_safe %>
-     <% end %>
-     </td>
-   </tr>
-
-
-<% end %>
-</table>
 
 
 <h3>Options</h3>
