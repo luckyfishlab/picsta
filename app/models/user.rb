@@ -58,15 +58,15 @@ class User < ActiveRecord::Base
   #cancel_subscription
   #expire
   #update_plan
- ## TODO
-  #cancel_subscription
-  #expire
-  #update_plan
 
+  # update_stripe appears to be called every time a user logs in
+  # this doesn't seem like a good idea
   def update_stripe
     return if email.include?(ENV['ADMIN_EMAIL'])
-    return if email.include?('@example.com') and not Rails.env.production?
-    return if Rails.env.production?
+    #return if email.include?('@example.com') and not Rails.env.production?
+    #return if Rails.env.production?
+    return if !roles.where(:name => :silver).exists?
+
     if customer_id.nil?
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
