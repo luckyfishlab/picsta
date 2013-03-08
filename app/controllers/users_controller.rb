@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     if current_power.is_admin == true
       @users = end_of_association_chain.all
       @roles = Role.all
+      @groups = Group.all
       respond_to do |format|
         format.html # index.html.erb
       end
