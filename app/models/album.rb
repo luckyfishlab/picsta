@@ -1,6 +1,7 @@
 class Album < ActiveRecord::Base
-  include PublicActivity::Common
-
+  include PublicActivity::Model
+  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   attr_accessible :title, :user_id, :image_id, :folder_id
 

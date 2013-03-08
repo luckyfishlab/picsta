@@ -48,11 +48,11 @@ class AlbumsController < ApplicationController
   def create
     @album = end_of_association_chain.new(params[:album])
     @album.user_id = current_user.id
-    @album.folder_id = Folder.find_by_group_id(Power.current.current_group.id).id
+    group_id = Power.current.current_group.id
+    @album.folder_id = Folder.find_by_group_id(group_id).id
 
     respond_to do |format|
       if @album.save
-        @album.create_activity :create, owner: current_user
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
@@ -68,7 +68,6 @@ class AlbumsController < ApplicationController
   # PUT /albums/1.json
   def update
     @album = end_of_association_chain.find(params[:id])
-    @album.create_activity :update, owner: current_user
     respond_to do |format|
       if @album.update_attributes(params[:album])
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
@@ -84,7 +83,6 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1.json
   def destroy
     @album = end_of_association_chain.find(params[:id])
-    @album.create_activity :destroy, owner: current_user
     @album.destroy
 
 
