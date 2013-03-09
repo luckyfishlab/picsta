@@ -259,8 +259,12 @@ Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
 end
 
-Then /I should be on the new silver user registration page$/ do
-  current_path_with_args.should == '/users/sign_up/?plan=silver'
+Then /^I should be on the new silver user registration page$/ do
+  current_path.should == '/users/sign_up/?plan=silver'
+end
+
+Then /^I should be on the new user registration page$/ do
+  current_path.should == '/users/sign_up'
 end
 
 Then /^I should be on the "([^"]*)" page$/ do |path_name|

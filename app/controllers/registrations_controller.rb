@@ -4,23 +4,34 @@ class RegistrationsController < Devise::RegistrationsController
     if @plan.eql?('silver')
       super
     else
-      redirect_to root_path, :notice => 'Please select a subscription plan below.'
+      params[:plan] = 'silver'
+      @plan = params[:plan]
+      super
+      #redirect_to root_path, :notice => 'Please select a subscription plan below.'
     end
   end
 
 
   def create
-     puts params
-     super
-     #@subscription = Subscription.new(params[:subscription_attributes])
-     #if @subscription.save_with_payment
-     #  redirect_to @subscription, :notice => "Thank you for &crarr;
-     #    subscribing!"
-     #else
-     #  render :new
-     #end
-   end
+    build_resource
 
+    if resource.save
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      #respond_with resource
+      #render :new
+      redirect_to new_user_registration_path, :notice => 'declined'
+    end
+  end
 
   def update_plan
     @user = current_user

@@ -26,7 +26,7 @@ $('.registrations').ready(function() {
         },
         handleStripeResponse: function(status, response) {
           if (status === 200) {
-            $('#user_subscription_stripe_token').val(response.id)
+            $('#user_subscription_attributes_stripe_token').val(response.id)
             $('.card_form')[0].submit()
           } else {
             $('#stripe_error').text(response.error.message).show();

@@ -9,9 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_accessible :role_ids, :group_ids, :invited_by_group_id
-  attr_accessible :subscription_attributes#,:stripe_token, :coupon
+  attr_accessible :subscription_attributes
 
-  #attr_accessor :stripe_token, :coupon
 
   validates_with PostInviteValidator, :fields => [:name]
 

@@ -17,7 +17,7 @@ class Subscription < ActiveRecord::Base
       return if user.email.include?(ENV['ADMIN_EMAIL'])
       return if user.email.include?('@example.com') and Rails.env.test?
       #return if Rails.env.production?
-      return if !Rails.env.test? and !user.roles.where(:name => :silver).exists?
+      #return if !Rails.env.test? and !user.roles.where(:name => :silver).exists?
 
       if customer_id.nil?
         if !stripe_token.present?

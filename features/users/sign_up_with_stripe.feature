@@ -65,6 +65,6 @@ Feature: User signs up with stripe
       Then I select "10 - October" as the "month"
       And I select "2016" as the "year"
       When I press "Sign up"
-      Then I should be on the "user registration" page
+      Then I should be on the new user registration page
       And I should see "declined"
 
