@@ -6,34 +6,14 @@ def create_visitor
     :password => "changeme", :password_confirmation => "changeme" }
 end
 
-def create_user_as opt
-  @my_visitor ||= { :name => opt,  :email => "#{opt}@example.com",
+def create_user_as opt, symbol
+  @visitor ||= { :name => opt,  :email => "#{opt.gsub(/ /, '.')}@example.com",
                     :password => "changeme", :password_confirmation => "changeme" }
   # delete
-  @user ||= User.where(:email => @my_visitor[:email]).first
+  @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?
 
-  @user = FactoryGirl.create(:user, @my_visitor)
-end
-
-def create_subscriber_as opt
-  @my_visitor ||= { :name => 'Test Subscriber',  :email => "#{opt}@example.com",
-    :password => "changeme", :password_confirmation => "changeme" }
-
-  @user ||= User.where(:email => @my_visitor[:email]).first
-  @user.destroy unless @user.nil?
-
-  @user = FactoryGirl.create(:user5, @my_visitor)
-end
-
-def create_admin_as opt
-  @my_visitor ||= { :name => 'Test Admin',  :email => "#{opt}@example.com",
-    :password => "changeme", :password_confirmation => "changeme" }
-
-  @user ||= User.where(:email => @my_visitor[:email]).first
-  @user.destroy unless @user.nil?
-
-  @user = FactoryGirl.create(:user4, @my_visitor)
+  @user = FactoryGirl.create(symbol, @visitor)
 end
 
 def find_user
@@ -51,8 +31,6 @@ def create_user
   create_visitor
   delete_user
   @user = FactoryGirl.create(:user, @visitor)
-  @role = FactoryGirl.create(:silver_role)
-  @role.create_membership!(@user)
 end
 
 def delete_user
@@ -80,8 +58,8 @@ end
 
 def sign_in_as opt
   visit '/users/sign_in'
-  fill_in "user_email", :with => @my_visitor[:email]
-  fill_in "user_password", :with => @my_visitor[:password]
+  fill_in "user_email", :with => @visitor[:email]
+  fill_in "user_password", :with => @visitor[:password]
   click_button "Sign in"
 end
 
@@ -99,11 +77,11 @@ Given /^I am logged in as "(.*?)" as a "(.*?)"$/ do |arg1, role|
 
   case role
     when "viewer"
-      create_user_as arg1
+      create_user_as arg1, :viewer
     when "admin"
-      create_admin_as arg1
+      create_user_as arg1, :admin
     when "subscriber"
-      create_subscriber_as arg1
+      create_user_as arg1, :subscriber
     else
       puts "I couldn't match a role"
   end
@@ -192,10 +170,6 @@ When /^I look at the list of users$/ do
   visit '/'
 end
 
-When /^I follow the subscribe for silver path$/ do
-  visit '/users/sign_up?plan=silver'
-end
-
 
 ### THEN ###
 Then /^I should be signed in$/ do
@@ -259,9 +233,6 @@ Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
 end
 
-Then /I should be on the new silver user registration page$/ do
-  current_path_with_args.should == '/users/sign_up/?plan=silver'
-end
 
 Then /^I should be on the "([^"]*)" page$/ do |path_name|
   current_path.should == send("#{path_name.parameterize('_')}_path")

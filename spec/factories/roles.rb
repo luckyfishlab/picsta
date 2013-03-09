@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :user_role, :class => :role do
-    name "user"
+  factory :viewer_role, :class => :role do
+    name "viewer"
   end
   factory :admin_role, :class => :role do
     name "admin"
@@ -10,8 +10,4 @@ FactoryGirl.define do
   factory :subscriber_role, :class => :role do
     name "subscriber"
   end
-  factory :silver_role, :class => :role do
-    name "subscriber"
-  end
-
 end

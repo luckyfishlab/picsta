@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ActivitiesController do
 
   before (:each) do
-    @user = FactoryGirl.create(:user5)
+    @user = FactoryGirl.create(:subscriber)
     sign_in @user
   end
 

@@ -70,8 +70,8 @@ describe ImagesController do
   end
   describe "GET index" do
     before(:each) do
-      @user = FactoryGirl.create(:user3)
-      @admin = FactoryGirl.create(:user4)
+      @user = FactoryGirl.create(:viewer)
+      @admin = FactoryGirl.create(:admin)
     end
 
     def valid_session

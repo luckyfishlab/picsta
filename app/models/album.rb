@@ -1,7 +1,9 @@
 class Album < ActiveRecord::Base
   include PublicActivity::Model
   tracked
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  ## TODO public_activity added this to simplify controller
+  ## but it makes the model test require info from controller
+  #tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   attr_accessible :title, :user_id, :image_id, :folder_id
 

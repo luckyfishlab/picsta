@@ -29,29 +29,6 @@ class Power
     User if is_admin?
   end
 
-  power :is_silver do
-    roles = @user.roles.where(:name => :silver)
-    if roles.first.nil?
-      false
-    else
-      true
-    end
-  end
-
-
-################## TODO not sure these are in use
-
-
-  power :is_subscriber do
-    roles = @user.roles.where(:name => :subscriber)
-    if roles.first.nil?
-      false
-    else
-      true
-    end
-  end
-
-
   power :is_admin do
     if Rails.env == 'test' or Rails.env == 'cucumber'
       if @user.name.eql?("Test Admin")
@@ -66,6 +43,19 @@ class Power
       else
         true
       end
+    end
+  end
+
+
+################## TODO not sure these are in use
+
+
+  power :is_subscriber do
+    roles = @user.roles.where(:name => :subscriber)
+    if roles.first.nil?
+      false
+    else
+      true
     end
   end
 

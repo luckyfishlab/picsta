@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe AlbumStat do
   it "should be created when an album is created" do
-
     expect {
          album = FactoryGirl.create(:album)
 
