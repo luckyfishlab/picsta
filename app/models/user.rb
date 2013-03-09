@@ -63,9 +63,9 @@ class User < ActiveRecord::Base
   # this doesn't seem like a good idea
   def update_stripe
     return if email.include?(ENV['ADMIN_EMAIL'])
-    #return if email.include?('@example.com') and not Rails.env.production?
+    return if email.include?('@example.com') and Rails.env.test?
     #return if Rails.env.production?
-    return if !roles.where(:name => :silver).exists?
+    return if !Rails.env.test? and !roles.where(:name => :silver).exists?
 
     if customer_id.nil?
       if !stripe_token.present?
