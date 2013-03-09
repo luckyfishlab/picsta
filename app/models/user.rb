@@ -8,20 +8,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  attr_accessible :role_ids, :group_ids, :invited_by_group_id,:stripe_token, :coupon
-
-  attr_accessor :stripe_token, :coupon
+  attr_accessible :role_ids, :group_ids, :invited_by_group_id,
 
   validates_with PostInviteValidator, :fields => [:name]
 
-
   after_create :create_resource_chain
-  before_save :update_stripe
-
-  #before_destroy :cancel_subscription
 
   has_many :albums
-
 
   has_many :memberships
   has_many :roles, :through => :memberships
@@ -52,69 +45,6 @@ class User < ActiveRecord::Base
       g = Group.create(:owner_id => id)
       g.create_group_user! self
     end
-  end
-
-  ## TODO
-  #cancel_subscription
-  #expire
-  #update_plan
-
-  # update_stripe appears to be called every time a user logs in
-  # this doesn't seem like a good idea
-  def update_stripe
-    return if email.include?(ENV['ADMIN_EMAIL'])
-    return if email.include?('@example.com') and Rails.env.test?
-    #return if Rails.env.production?
-    return if !Rails.env.test? and !roles.where(:name => :silver).exists?
-
-    if customer_id.nil?
-      if !stripe_token.present?
-        raise "Stripe token not present. Can't create account."
-      end
-      ## TODO look at :plan => memberships.first.role.name
-      ## It was originally roles.first.name, but in this app
-      ## the membership is what gets built,
-      if coupon.blank?
-        customer = Stripe::Customer.create(
-          :email => email,
-          :description => name,
-          :card => stripe_token,
-          :plan => 'silver'
-        )
-      else
-        customer = Stripe::Customer.create(
-          :email => email,
-          :description => name,
-          :card => stripe_token,
-          :plan => 'silver',
-          :coupon => coupon
-        )
-      end
-    else
-      customer = Stripe::Customer.retrieve(customer_id)
-      if stripe_token.present?
-        customer.card = stripe_token
-      end
-      customer.email = email
-      customer.description = name
-      customer.save
-    end
-    self.last_4_digits = customer.active_card.last4
-    self.customer_id = customer.id
-    self.stripe_token = nil
-  rescue Stripe::StripeError => e
-    logger.error "Stripe Error: " + e.message
-    errors.add :base, "#{e.message}."
-    self.stripe_token = nil
-    false
-  end
-
-
-  def expire
-    puts "**************************************"
-    puts "***********called expire event"
-    #UserMailer.expire_email(self).deliver
-    #destroy
   end
 
 end
