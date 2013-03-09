@@ -10,4 +10,8 @@ FactoryGirl.define do
   factory :subscriber_role, :class => :role do
     name "subscriber"
   end
+  factory :silver_role, :class => :role do
+    name "subscriber"
+  end
+
 end

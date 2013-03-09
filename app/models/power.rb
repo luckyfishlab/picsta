@@ -14,9 +14,11 @@ class Power
   end
 
   power :albums do
-    group_id = @user.groups.first
-    folder = Folder.where(:group_id => group_id).first
-    Album.where(:folder_id => folder.id)
+    group = @user.groups.first
+    unless group.nil?
+      folder = Folder.where(:group_id => group.id).first
+      Album.where(:folder_id => folder.id)
+    end
   end
 
   power :images do
@@ -27,6 +29,19 @@ class Power
     User if is_admin?
   end
 
+  power :is_silver do
+    roles = @user.roles.where(:name => :silver)
+    if roles.first.nil?
+      false
+    else
+      true
+    end
+  end
+
+
+################## TODO not sure these are in use
+
+
   power :is_subscriber do
     roles = @user.roles.where(:name => :subscriber)
     if roles.first.nil?
@@ -35,6 +50,7 @@ class Power
       true
     end
   end
+
 
   power :is_admin do
     if Rails.env == 'test' or Rails.env == 'cucumber'

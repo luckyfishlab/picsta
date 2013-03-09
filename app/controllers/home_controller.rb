@@ -6,9 +6,9 @@ class HomeController < ApplicationController
       end
     end
     if user_signed_in?
-      #@activities = PublicActivity::Activity.order("created_at desc")
-      all_activities = PublicActivity::Activity.order("created_at desc")
-      @activities = Kaminari.paginate_array(all_activities).page(params[:page])
+      #all_activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.group_ids)
+      #all_activities = PublicActivity::Activity.order("created_at desc").where('owner_id IN (?)', GroupUser.where(group_id: current_user.group_ids.first))
+      #@activities = Kaminari.paginate_array(all_activities).page(params[:page])
     end
   end
 end

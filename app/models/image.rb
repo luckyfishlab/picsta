@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
-  include PublicActivity::Common
+  include PublicActivity::Model
 
-  #tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   attr_accessible :album_id, :pic, :title
   belongs_to :album

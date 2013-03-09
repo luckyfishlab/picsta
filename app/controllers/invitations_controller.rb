@@ -10,6 +10,7 @@ class InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
   def create
     params[resource_name][:invited_by_group_id] = current_inviter.groups.first.id unless current_inviter.groups.first.nil?
+    #current_user.create_activity key: "invited user", owner: current_user
     super
   end
 

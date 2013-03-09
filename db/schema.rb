@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307044656) do
+ActiveRecord::Schema.define(:version => 20130309042009) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(:version => 20130307044656) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "customer_id"
+    t.string   "last_4_digits"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
     t.string   "encrypted_password",                   :default => ""
@@ -107,6 +115,8 @@ ActiveRecord::Schema.define(:version => 20130307044656) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invited_by_group_id"
+    t.string   "customer_id"
+    t.string   "last_4_digits"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

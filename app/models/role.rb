@@ -11,6 +11,9 @@ class Role < ActiveRecord::Base
   end
 
 
+  def build_membership(user)
+    memberships.build( user_id: user.id, role_id: id)
+  end
 
   def destroy_membership!(user)
     memberships.find(user.id).destroy

@@ -3,10 +3,13 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Signed up</th>
     <th>Last login</th>
     <th>Invited by</th>
+    <th>Roles</th>
+    <th>Groups</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,10 +17,13 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.id %></td>
     <td><%= link_to user.name, user %></td>
     <td><%= user.created_at.to_date %></td>
     <td><%= user.current_sign_in_at.to_date if user.current_sign_in_at%></td>
     <td><%= user.invited_by_name if user.invited_by_id %></td>
+    <td><%= roles_helper(user)  %></td>
+    <td><%= groups_helper(user) %></td>
     <td><%= link_to 'Show', user %></td>
 
     <td>
@@ -28,6 +34,30 @@
   </tr>
 <% end %>
 </table>
+
+<h3>Groups</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Owner</th>
+    <th># members</th>
+  </tr>
+<% @groups.each do |group| %>
+   <tr>
+     <td><%= group.id %></td>
+     <td><%= User.find(group.owner_id).name.nil? ? User.find(group.owner_id).email : User.find(group.owner_id).name %></td>
+     <td>
+     <% GroupUser.find_all_by_group_id(group.id).each do |group_user| %>
+        <%= User.find(group_user.user_id).name.nil? ? User.find(group_user.user_id).email : User.find(group_user.user_id).name %>
+     <% end %>
+     </td>
+   </tr>
+
+
+<% end %>
+</table>
+
+
 
 
 <h3>Options</h3>
