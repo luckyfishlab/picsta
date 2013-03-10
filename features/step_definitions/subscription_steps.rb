@@ -6,6 +6,10 @@ Given /^The "(.*?)" plan exists$/ do |arg1|
   FactoryGirl.create(:plan, {:name => arg1})
 end
 
+When /^I click the link "(.*?)"$/ do |arg1|
+  click_link arg1
+end
+
 When /^I select the "(.*?)" plan$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end

@@ -17,18 +17,18 @@ Feature: Subscription plans
 
   Scenario: Can look at available plans
       And I sign up with valid user data
-     When I press "Subscribe"
+     When I click the link "Subscribe"
      Then I should see "Choose a subscription plan"
 
   Scenario: Can pick a plan
     And I sign up with valid user data
-    And I press "Subscribe"
+    And I click the link "Subscribe"
    When I select the "entry level" plan
     Then I see the subscription form
 
   Scenario: Can subscribe
     And I sign up with valid user data
-    And I press "Subscribe"
+    And I click the link "Subscribe"
     And I select the "entry level" plan
     When I complete the subscription form with valid credit card data
     Then I should see "Thank you for subscribing"

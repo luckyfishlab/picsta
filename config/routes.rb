@@ -1,6 +1,7 @@
 Picsta::Application.routes.draw do
 
 
+
   authenticated :user do
     root :to => "home#index"
     #root :to => 'albums#index'
