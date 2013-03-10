@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates_with PostInviteValidator, :fields => [:name]
 
-  after_create :create_resource_chain
+  after_create :create_subscriber_resource_chain
   after_invitation_accepted :add_to_role
 
 
@@ -45,9 +45,13 @@ class User < ActiveRecord::Base
 
   end
 
-  def create_resource_chain
+  def create_subscriber_resource_chain
     # awkward way to say we are a new customer
     if invitation_token.nil?
+      # Add a subscriber role
+      r = Role.find_by_name(:subscriber)
+      r.create_membership! self unless r.nil?
+      # Create subscriber resources
       g = Group.create(:owner_id => id)
       g.create_group_user! self
     end

@@ -59,12 +59,12 @@ FactoryGirl.define do
 
   end
   factory :vip, class: 'User' do
-      name 'Test VIP'
-      email 'vip@example.com'
-      password 'changeme'
-      password_confirmation 'changeme'
+    name 'Test VIP'
+    email 'vip@example.com'
+    password 'changeme'
+    password_confirmation 'changeme'
 
-      after(:create) { |instance| instance.roles << create_list(:vip_role,1)}
+    after(:create) { |instance| instance.roles << create_list(:vip_role,1)}
 
   end
 
