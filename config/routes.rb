@@ -18,6 +18,8 @@ Picsta::Application.routes.draw do
   resources :users
   resources :images
 
+  resources :subscriptions
+
   get "static_pages/home"
 
   match '/about' => 'static_pages#about'

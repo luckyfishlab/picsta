@@ -1,0 +1,14 @@
+<h2>Choose a subscription plan</h2>
+
+<% @plans.each do |plan| %>
+  <p>Plan Name: <%= plan.name %></p>
+    <p>Plan Inspect: <%=  plan.inspect.html_safe %></p>
+<% end %>
+
+<%= simple_form_for @subscription do |f| %>
+    <%= f.input :plan, collection: @plans, :as => :radio_buttons, :label_method => :name, :value_method => :id %>
+    <%= f.button :submit %>
+
+<% end %>
+
+
