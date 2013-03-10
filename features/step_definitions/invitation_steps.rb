@@ -22,4 +22,10 @@ When /^I register with valid credentials$/ do
   click_button "Accept invitation"
 end
 
+Then /^I am a viewer$/ do
+  @user = User.find_by_email("invited@example.com")
+  m = Membership.find_by_user_id(@user.id)
+  r = Role.find_by_name(:viewer)
+  m.role_id.should be(r.id)
+end
 

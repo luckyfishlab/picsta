@@ -4,13 +4,18 @@ describe InvitationsController do
 
   before (:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
+    @role = FactoryGirl.create(:viewer_role)
     @user = FactoryGirl.create(:controller_test_subscriber)
     sign_in @user
 
   end
 
   def valid_attributes
+
     { "email" => "friend@example.com" }
+  end
+  def valid_acceptance_attributes
+    { "name" => "Invited User", "password" => "changeme", "password_confirmation" => "changeme",  "email" => "friend@example.com"}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -45,7 +50,7 @@ describe InvitationsController do
         }.to change(User, :count).by(1)
       end
 
-      it "assigns a newly created album as @album" do
+      it "invited user is persisted" do
         post :create, {:user => valid_attributes}, valid_session
         assigns(:user).should be_a(User)
         assigns(:user).should be_persisted
@@ -56,28 +61,10 @@ describe InvitationsController do
         assigns(User.last.invited_by_group_id).should eq(@user.invited_by_group_id)
       end
 
-    #
-    #  it "redirects to the created album" do
-    #    post :create, {:album => valid_attributes}, valid_session
-    #    response.should redirect_to(Album.last)
-    #  end
-    #end
-    #
-    #describe "with invalid params" do
-    #  it "assigns a newly created but unsaved album as @album" do
-    #    # Trigger the behavior that occurs when invalid params are submitted
-    #    Album.any_instance.stub(:save).and_return(false)
-    #    post :create, {:album => { "title" => "invalid value" }}, valid_session
-    #    assigns(:album).should be_a_new(Album)
-    #  end
-    #
-    #  it "re-renders the 'new' template" do
-    #    # Trigger the behavior that occurs when invalid params are submitted
-    #    Album.any_instance.stub(:save).and_return(false)
-    #    post :create, {:album => { "title" => "invalid value" }}, valid_session
-    #    response.should render_template("new")
-    #  end
+
     end
   end
+
+
 
 end

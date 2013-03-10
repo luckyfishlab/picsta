@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validates_with PostInviteValidator, :fields => [:name]
 
   after_create :create_resource_chain
+  after_invitation_accepted :add_to_role
+
+
 
   has_many :albums
 
@@ -23,7 +26,10 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :group_users
 
 
-
+  def add_to_role
+    r = Role.find_by_name(:viewer)
+    r.create_membership! self unless r.nil?
+  end
 
   def invited_by_name
     u = User.find(invited_by_id)

@@ -18,3 +18,9 @@ end
 Then /^I should not see the admin link$/ do
   page.should_not have_content "Admin"
 end
+
+Given /^The viewer role exist$/ do
+  FactoryGirl.create(:viewer_role)
+  #FactoryGirl.create(:admin_role)
+  #FactoryGirl.create(:subscriber_role)
+end

@@ -58,7 +58,15 @@ FactoryGirl.define do
     after(:create) { |instance| instance.roles << create_list(:subscriber_role,1)}
 
   end
+  factory :vip, class: 'User' do
+      name 'Test VIP'
+      email 'vip@example.com'
+      password 'changeme'
+      password_confirmation 'changeme'
 
+      after(:create) { |instance| instance.roles << create_list(:vip_role,1)}
+
+  end
 
 
 end

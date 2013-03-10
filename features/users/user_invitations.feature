@@ -27,6 +27,7 @@ Feature: Invite user
    Then I should see "errors"
 
   Scenario: Accept invitation with valid credentials
+    Given The viewer role exist
     Given I am logged in as "Steve" as a "subscriber"
     And I invite someone
     And I sign out
@@ -34,3 +35,4 @@ Feature: Invite user
     And I follow "Accept invitation" in the email
     When I register with valid credentials
     Then I should see "Your password was set successfully. You are now signed in."
+    And I am a viewer

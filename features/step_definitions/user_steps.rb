@@ -82,6 +82,8 @@ Given /^I am logged in as "(.*?)" as a "(.*?)"$/ do |arg1, role|
       create_user_as arg1, :admin
     when "subscriber"
       create_user_as arg1, :subscriber
+    when "vip"
+      create_user_as arg1, :vip
     else
       puts "I couldn't match a role"
   end
@@ -165,11 +167,6 @@ When /^I edit my account details$/ do
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
 end
-
-When /^I look at the list of users$/ do
-  visit '/'
-end
-
 
 ### THEN ###
 Then /^I should be signed in$/ do

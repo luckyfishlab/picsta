@@ -14,7 +14,9 @@ class InvitationsController < Devise::InvitationsController
     super
   end
 
+  # PUT /resource/invitation
   def update
+
     self.resource = resource_class.accept_invitation!(resource_params)
 
     if resource.errors.empty?
