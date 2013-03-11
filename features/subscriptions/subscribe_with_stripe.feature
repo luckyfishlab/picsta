@@ -18,9 +18,9 @@ Feature: User signs up with stripe
       | card_code                  | 111               |
     Then I select "5 - May" as the "month"
     And I select "2015" as the "year"
+    #Then I debug
     When I press "Submit"
-    #Then I should be on the "content silver" page
-    Then I should see a successful sign up message
+    Then I should see "Thank you for subscribing"
 
   @javascript
   Scenario: With invalid card number
@@ -31,7 +31,6 @@ Feature: User signs up with stripe
     Then I select "1 - January" as the "month"
     And I select "2016" as the "year"
     When I press "Submit"
-    #Then I should be on the new silver user registration page
     And I should see "Your card number is incorrect"
 
   @javascript
@@ -55,6 +54,5 @@ Feature: User signs up with stripe
       Then I select "10 - October" as the "month"
       And I select "2016" as the "year"
       When I press "Submit"
-      Then I should be on the "user registration" page
       And I should see "declined"
 

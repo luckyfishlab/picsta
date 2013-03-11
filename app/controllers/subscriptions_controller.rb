@@ -18,6 +18,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.save_with_payment
       redirect_to root_path, :notice => "Thank you for subscribing!"
     else
+      @user = current_user
       render :new
     end
   end

@@ -16,6 +16,22 @@ class Subscription < ActiveRecord::Base
       self.last_4_digits = customer.active_card.last4
       save!
     end
+  rescue Stripe::CardError => e
+    # Since it's a decline, Stripe::CardError will be caught
+    body = e.json_body
+    err = body[:error]
+    puts "Status is: #{e.http_status}"
+    puts "Type is: #{err[:type]}"
+    puts "Code is: #{err[:code]}"
+    # param is '' in this case
+    puts "Param is: #{err[:param]}"
+    puts "Message is: #{err[:message]}"
+
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card. #{err[:message]}"
+
+    false
+
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
