@@ -5,6 +5,9 @@ class SubscriptionsController < ApplicationController
   def new
     @subscription = Subscription.new()
     @plans = Plan.all
+    # Needed so we can set the default selection in the view
+    params[:plan_id] = @plans.first.id
+    @user = current_user
   end
 
   # POST /subscriptions
@@ -12,15 +15,11 @@ class SubscriptionsController < ApplicationController
     @subscription = end_of_association_chain.new(params[:subscription])
     @subscription.user_id = current_user.id
 
-    respond_to do |format|
-      if @subscription.save
-        format.html { redirect_to root_path, notice: 'Subscription was successfully created.' }
-      else
-        format.html { render action: "new" }
-      end
+    if @subscription.save_with_payment
+      redirect_to root_path, :notice => "Thank you for subscribing!"
+    else
+      render :new
     end
-
-
   end
 
   def edit

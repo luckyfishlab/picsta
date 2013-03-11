@@ -1,9 +1,9 @@
-$('.registrations').ready(function() {
+$('.subscriptions').ready(function() {
   $.externalScript('https://js.stripe.com/v1/').done(function(script, textStatus) {
       Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
       var subscription = {
         setupForm: function() {
-          return $('.card_form').submit(function() {
+          return $('#new_subscription').submit(function() {
             $('input[type=submit]').prop('disabled', true);
             if ($('#card_number').length) {
               subscription.processCard();
@@ -26,8 +26,8 @@ $('.registrations').ready(function() {
         },
         handleStripeResponse: function(status, response) {
           if (status === 200) {
-            $('#user_stripe_token').val(response.id)
-            $('.card_form')[0].submit()
+            $('#subscription_stripe_token').val(response.id)
+            $('#new_subscription')[0].submit()
           } else {
             $('#stripe_error').text(response.error.message).show();
             return $('input[type=submit]').prop('disabled', false);

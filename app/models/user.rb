@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   after_invitation_accepted :add_to_role
 
 
+  has_one :subscription
+  has_one :plan, :through => :subscription
 
   has_many :albums
 

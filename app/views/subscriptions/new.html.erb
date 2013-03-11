@@ -1,9 +1,57 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<% end %>
 <h2>Choose a subscription plan</h2>
 
 <%= simple_form_for @subscription do |f| %>
-    <%= f.association :plan, as: :radio_buttons %>
-    <%= f.button :submit %>
 
+  <% if @subscription.errors.any? %>
+
+    <div class="error_messages">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :stripe_token %>
+
+    <%= f.association :plan,
+                      as: :radio_buttons,
+                      label_method: :name_and_description,
+                      value_method: :id,
+                      :checked => [params[:plan_id]] %>
+
+    <div id="stripe_error">
+       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+     </div>
+
+<% if @subscription.stripe_token.present? %>
+  Credit card has been provided.
+<% else %>
+    <div class="field">
+      <%= label_tag :name_on_card %>
+      <%= text_field_tag :user_name, @user.name %>
+    </div>
+  <div class="field">
+    <%= label_tag :card_number, "Credit Card Number" %>
+    <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
 <% end %>
 
 
+    <%= f.submit 'Submit' %>
+
+<% end %>
