@@ -1,3 +1,5 @@
+<div class="row">
+<div class="span6">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
@@ -11,4 +13,40 @@
 <% end %>
 <h3>Cancel my account</h3>
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+</div>
+<div class="span6">
+  <% if resource.subscription.nil? %>
+     <h2>Subscribe</h2>
+      <p> Become a subscriber today!</p>
+      <button href="#">Subscribe</button>
+  <% else %>
+      <h2>Subscription Info</h2>
+      <p>You are currently subscribed to the <%= resource.subscription.plan.name %> plan. Click below to modify your plan or change your credit card.</p>
+      <!-- <%= link_to 'Modify Plan', [:edit, resource.subscription], :class=>"btn btn-secondary btn-large" %> -->
+      <a data-toggle="modal" href="#plan-options" class="btn btn-mini" type="button">Modify Plan</a>
+  <% end %>
+</div>
+</div>
 <%= link_to "Back", :back %>
+
+
+<div id="plan-options" class="modal" style="display: none;">
+  <%= simple_form_for resource.subscription, :url => update_plan_path(resource.subscription), :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Change Plan</h3>
+    </div>
+    <div class="modal-body">
+      <%# f.input :plans, :collection=>:plans, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+      <%= f.association :plan,
+                        as: :radio_buttons,
+                        label_method: :name_and_description,
+                        value_method: :id,
+                        :checked => [params[:plan_id]] %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "Change Plan", :class => "btn btn-primary" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>

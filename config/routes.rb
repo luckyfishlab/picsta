@@ -19,6 +19,10 @@ Picsta::Application.routes.draw do
   resources :users
   resources :images
 
+  match 'update_plan' => 'subscriptions#update_plan', :via => :put
+     #put 'update_card', :to => 'registrations#update_card'
+
+
   resources :subscriptions
 
   get "static_pages/home"

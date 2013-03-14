@@ -24,10 +24,49 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+    @subscription = end_of_association_chain.find(params[:id])
+    @plans = Plan.all
+    # Needed so we can set the default selection in the view
+    params[:plan_id] = @subscription.plan_id
+    @user = current_user
+
   end
 
   def update
+    @subscription = end_of_association_chain.find(params[:id])
+    respond_to do |format|
+      if true #@subscription.update_attributes(params[:album])
+        format.html { redirect_to edit_registration_path(current_user), notice: 'Subscription was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
+  def update_plan
+    @subscription = end_of_association_chain.find(params[:subscription][:plan_id])
+    plan = Plan.find(params[:subscription][:plan_id]) unless params[:subscription][:plan_id].nil?
+    if @subscription.update_plan(plan)
+      redirect_to edit_user_registration_path, :notice => 'Updated plan.'
+    else
+      flash.alert = 'Unable to update plan.'
+      render :edit
+    end
+  end
+
+  #def update_card
+  #  @user = current_user
+  #  @user.stripe_token = params[:user][:stripe_token]
+  #  if @user.save
+  #    redirect_to edit_user_registration_path, :notice => 'Updated card.'
+  #  else
+  #    flash.alert = 'Unable to update card.'
+  #    render :edit
+  #  end
+  #end
+
 
   def end_of_association_chain
     Subscription
