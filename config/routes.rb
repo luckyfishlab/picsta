@@ -20,7 +20,7 @@ Picsta::Application.routes.draw do
   resources :images
 
   match 'update_plan' => 'subscriptions#update_plan', :via => :put
-  match 'update_card' => 'registrations#update_card', :via => :put
+  match 'update_card' => 'subscriptions#update_card', :via => :put
 
 
   resources :subscriptions

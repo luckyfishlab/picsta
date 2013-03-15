@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<% end %>
 <div class="row">
 <div class="span6">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -27,7 +30,7 @@
       <h2>Card Info</h2>
 
       <p>Using card ending with <%= resource.subscription.last_4_digits %>. Click below to change your credit card.</p>
-      <a data-toggle="modal" href="#card-data" class="btn btn-mini btn-secondary" type="button">Change card</a>
+      <a data-toggle="modal" href="#card-data" class="btn btn-mini btn-secondary" type="button">Change Card</a>
 
 
   <% end %>
@@ -59,7 +62,7 @@
     </div>
 
     <div id="card-data" class="modal" style="display: none;">
-      <%= simple_form_for resource.subscription, :as => resource_name, :url => update_card_path(resource.subscription), :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
+      <%= simple_form_for resource.subscription, :url => update_card_path(resource.subscription), :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
         <div class="modal-header">
           <a class="close" data-dismiss="modal">&#215;</a>
           <h3>Change Credit Card</h3>
@@ -78,12 +81,13 @@
             <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
             <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
           </div>
+          <%= f.hidden_field :id %>
           <%= f.hidden_field :user_name, :value => resource.name  %>
           <%= f.hidden_field :user_email, :value => resource.email %>
           <%= f.hidden_field :stripe_token %>
         </div>
         <div class="modal-footer">
-          <%= f.submit "Change Credit Card", :class => "btn btn-primary" %>
+          <%= f.submit "Change Credit Card", :class => "btn btn-primary", :id => "change_credit_card" %>
           <a class="btn" data-dismiss="modal" href="#">Close</a>
         </div>
       <% end %>

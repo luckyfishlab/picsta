@@ -52,8 +52,18 @@ class Subscription < ActiveRecord::Base
     false
   end
 
-  def update_card()
-
+  def update_card(new_stripe_token)
+    unless new_stripe_token.nil?
+      customer = Stripe::Customer.retrieve(customer_id)
+      customer.card = new_stripe_token
+      updated_customer = customer.save
+      self.last_4_digits = updated_customer.active_card.last4
+      save!
+    end
+    rescue Stripe::StripeError => e
+      logger.error "Stripe Error: " + e.message
+      errors.add :base, "Sorry. we were unable to update your card, #{e.message}."
+      false
   end
 
 end

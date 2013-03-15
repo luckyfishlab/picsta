@@ -56,9 +56,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def update_card
-    @user = current_user
-    @user.stripe_token = params[:user][:stripe_token]
-    if @user.save
+    @subscription = end_of_association_chain.find(params[:subscription][:id])
+    stripe_token = params[:subscription][:stripe_token]
+    if !stripe_token.empty? and @subscription.update_card(stripe_token)
       redirect_to edit_registration_path(current_user), :notice => 'Updated card.'
     else
       redirect_to edit_registration_path(current_user), :notice => 'Unable to update card.'

@@ -51,3 +51,14 @@ end
 Then /^I save a screenshot as "(.*?)"$/ do |arg1|
   page.save_screenshot(arg1)
 end
+
+Then /^I see my card ends in "(.*?)"$/ do |arg1|
+  page.should have_content "#{arg1}"
+end
+
+Then /^I see the card form$/ do
+  page.should have_selector("#card-data", visible: true)
+  page.should have_content "Credit Card Number"
+  page.should have_content "Card Expiration"
+  page.should have_content "Card Security Code (CVV)"
+end
