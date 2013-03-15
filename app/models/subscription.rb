@@ -41,13 +41,19 @@ class Subscription < ActiveRecord::Base
   def update_plan(plan)
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
-      customer.update_subscription(:plan => plan.name)
+      customer.update_subscription(:plan => plan.name.downcase)
+      self.plan_id = plan.id
+      save!
     end
     true
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to update your subscription. #{e.message}."
     false
+  end
+
+  def update_card()
+
   end
 
 end

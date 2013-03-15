@@ -21,9 +21,15 @@
       <button href="#">Subscribe</button>
   <% else %>
       <h2>Subscription Info</h2>
-      <p>You are currently subscribed to the <%= resource.subscription.plan.name %> plan. Click below to modify your plan or change your credit card.</p>
-      <!-- <%= link_to 'Modify Plan', [:edit, resource.subscription], :class=>"btn btn-secondary btn-large" %> -->
-      <a data-toggle="modal" href="#plan-options" class="btn btn-mini" type="button">Modify Plan</a>
+      <p>You are currently subscribed to the <%= resource.subscription.plan.name %> plan. Click below to modify your plan. or change your credit card.</p>
+      <a data-toggle="modal" href="#plan-options" class="btn btn-mini btn-secondary" type="button">Modify Plan</a>
+
+      <h2>Card Info</h2>
+
+      <p>Using card ending with <%= resource.subscription.last_4_digits %>. Click below to change your credit card.</p>
+      <a data-toggle="modal" href="#card-data" class="btn btn-mini btn-secondary" type="button">Change card</a>
+
+
   <% end %>
 </div>
 </div>
@@ -45,7 +51,39 @@
                         :checked => [params[:plan_id]] %>
     </div>
     <div class="modal-footer">
+      <%= f.hidden_field :id %>
       <%= f.submit "Change Plan", :class => "btn btn-primary" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>
+
+<div id="card-data" class="modal" style="display: none;">
+  <%= simple_form_for resource.subscription, :as => resource_name, :url => update_card_path(resource.subscription), :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Change Credit Card</h3>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_code, "Card Security Code (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+      </div>
+      <%= f.hidden_field :user_name, :value => resource.name  %>
+      <%= f.hidden_field :user_email, :value => resource.email %>
+      <%= f.hidden_field :stripe_token %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "Change Credit Card", :class => "btn btn-primary" %>
       <a class="btn" data-dismiss="modal" href="#">Close</a>
     </div>
   <% end %>

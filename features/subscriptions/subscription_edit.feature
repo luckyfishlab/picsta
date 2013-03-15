@@ -14,10 +14,16 @@ Feature: Edit subscription
      When I click the link "Edit account"
      Then I see I am subscribed to "silver" plan
 
+  @javascript
   Scenario: Change from silver to gold
     Given I am logged in as "Steve" as a "subscriber"
-    #Given I am subscribed to the "silver" plan
      And I click the link "Edit account"
-    When I click the link "Modify Plan"
-    Then I see the subsciption options
+    And I click the link "Modify Plan"
+    And I see the subscription option "gold"
+    When I change to the "gold" plan
+     And I press "Change Plan"
+    Then I see I am subscribed to "gold" plan
+
+
+
 

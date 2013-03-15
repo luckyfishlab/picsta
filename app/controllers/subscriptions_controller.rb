@@ -46,26 +46,24 @@ class SubscriptionsController < ApplicationController
   end
 
   def update_plan
-    @subscription = end_of_association_chain.find(params[:subscription][:plan_id])
+    @subscription = end_of_association_chain.find(params[:subscription][:id])
     plan = Plan.find(params[:subscription][:plan_id]) unless params[:subscription][:plan_id].nil?
     if @subscription.update_plan(plan)
-      redirect_to edit_user_registration_path, :notice => 'Updated plan.'
+      redirect_to edit_registration_path(current_user), :notice => 'Updated plan.'
     else
-      flash.alert = 'Unable to update plan.'
-      render :edit
+      redirect_to edit_registration_path(current_user), :notice => 'Unable to update plan.'
     end
   end
 
-  #def update_card
-  #  @user = current_user
-  #  @user.stripe_token = params[:user][:stripe_token]
-  #  if @user.save
-  #    redirect_to edit_user_registration_path, :notice => 'Updated card.'
-  #  else
-  #    flash.alert = 'Unable to update card.'
-  #    render :edit
-  #  end
-  #end
+  def update_card
+    @user = current_user
+    @user.stripe_token = params[:user][:stripe_token]
+    if @user.save
+      redirect_to edit_registration_path(current_user), :notice => 'Updated card.'
+    else
+      redirect_to edit_registration_path(current_user), :notice => 'Unable to update card.'
+    end
+  end
 
 
   def end_of_association_chain
