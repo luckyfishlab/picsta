@@ -45,21 +45,16 @@
         <div class="content">
            <div class="row">
             <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
+              <div class="application-wrapper">
+                  <%= render 'layouts/messages' %>
+                  <%= yield %>
+              </div>
             </div>
           </div>
         </div>
       </div> <!--! end of .container -->
     </div> <!==! end of .content-wrapper" id="body">
     </div> <!--! end of #main -->
-    <div class="content-wrapper" id="footer">
-    <div class="container">
-
-    <div class="footer">
-     <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
-    </div>
-    </div>
-    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

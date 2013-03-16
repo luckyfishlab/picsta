@@ -44,20 +44,20 @@
   <div class="container marketing">
     <!-- Three columns of text below the carousel -->
     <div class="row">
+      <div class="span4">
+          <h2>Simple</h2>
+          <p>Upload your family moments now. The simple interface lets you add pictures directly from you smartphone, tablet, or computer. There is no waiting to update client software just to get to your pictures.</p>
+
+      </div><!-- /.span4 -->
+      <div class="span4">
+          <h2>Secure</h2>
+          <p>You can't replace lost pictures. Back them up now. Take control of your images. You are not the product. You are the customer.</p>
+
+      </div><!-- /.span4 -->
 
         <div class="span4">
-            <h2>Sharing</h2>
+            <h2>Shared</h2>
             <p>Sharing should be rewarding. Your grandmother wants to see her grandchild's precious moments and not social network security policy.</p>
-
-        </div><!-- /.span4 -->
-        <div class="span4">
-            <h2>Simple</h2>
-            <p>Upload your family moments now. The simple interface lets you add pictures directly from you smartphone, tablet, or computer. There is no waiting to update client software just to get to your pictures.</p>
-
-        </div><!-- /.span4 -->
-        <div class="span4">
-            <h2>Security</h2>
-            <p>You can't replace lost pictures. Back them up now. Take control of your images. You are not the product. You are the customer.</p>
 
         </div><!-- /.span4 -->
     </div>
@@ -65,11 +65,4 @@
 </div>
 </div> <!==! end of .content-wrapper" id="body">
 </div> <!--! end of #main -->
-<div class="content-wrapper" id="footer">
-<div class="container">
-
-<div class="footer">
- <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
-</div>
-</div>
-</div>
+<%= render 'layouts/footer' %>
