@@ -88,9 +88,10 @@ h1 {
     line-height: 100px;
 }
 
-h2, h3, h4, h5, h6 {
+h3, h4, h5, h6 {
   font-family: 'Lobster', Georgia, Times, serif;
 }
+h2 {     font-family: 'Cabin', Helvetica, Arial, sans-serif;}
 p {
     font-family: 'Cabin', Helvetica, Arial, sans-serif;
     font-size: 15px;
@@ -98,7 +99,7 @@ p {
 
 
 h1 {
-    text-shadow: 1px 1px 1px #ccc;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .hero-unit {

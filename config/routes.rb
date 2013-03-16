@@ -30,6 +30,7 @@ Picsta::Application.routes.draw do
   root :to => 'static_pages#home'
   match '/about' => 'static_pages#about'
   match '/privacy_policy' => 'static_pages#privacy'
+  match '/more_info' => 'static_pages#more_info'
   match '/thanks' => 'static_pages#thanks'
 
   match 'contact' => 'contact#new', :as => 'contact', :via => :get

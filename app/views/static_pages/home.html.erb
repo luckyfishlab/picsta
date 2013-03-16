@@ -21,10 +21,11 @@
 
             <%= image_tag "birthday_grey.jpg" %>
             <div class="container">
+              <%= render 'layouts/messages' %>
                 <div class="carousel-caption pull-right">
                     <h1>Picsta</h1>
                     <p class="lead">Picsta makes it simple to save and share your pictures with the most important people in your life, your family. Add images directly from your smartphone or computer without fear of becoming the next social network product.</p>
-                    <a class="btn btn-large btn-primary" href="signup.html">More Info</a> <%= link_to 'Login', new_user_session_path, :class => "btn btn-large btn-info" %>
+                  <%=  link_to 'More Info', more_info_path, :class =>"btn btn-large btn-primary" %> <%= link_to 'Login', new_user_session_path, :class => "btn btn-large btn-info" %>
                 </div>
             </div>
         </div>

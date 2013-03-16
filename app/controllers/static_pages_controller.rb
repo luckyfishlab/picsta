@@ -5,6 +5,10 @@ class StaticPagesController < ApplicationController
     render :layout => 'home'
   end
 
+  def more_info
+
+  end
+
   def about
   end
 
@@ -12,6 +16,5 @@ class StaticPagesController < ApplicationController
   end
 
   def thanks
-
   end
 end

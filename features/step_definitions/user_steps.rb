@@ -170,15 +170,15 @@ end
 
 ### THEN ###
 Then /^I should be signed in$/ do
-  page.should have_content "Logout"
-  page.should_not have_content "Sign up"
-  page.should_not have_content "Login"
+  page.find(".navbar").should have_content "Logout"
+  page.find(".navbar").should_not have_content "Sign up"
+  page.find(".navbar").should_not have_content "Login"
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
-  page.should have_content "Login"
-  page.should_not have_content "Logout"
+  page.find(".navbar").should have_content "Sign up"
+  page.find(".navbar").should have_content "Login"
+  page.find(".navbar").should_not have_content "Logout"
 end
 
 Then /^I see an unconfirmed account message$/ do
