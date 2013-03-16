@@ -12,7 +12,6 @@
     </div> <!-- /.container -->
 </div><!-- /.navbar-wrapper -->
 
-
 <div id="main" role="main">
 <div class="content-wrapper" id="body">
 <div id="myCarousel" class="carousel slide">
@@ -20,8 +19,14 @@
         <div class="item active">
 
             <%= image_tag "birthday_grey.jpg" %>
+          <div class="messages-wrapper">
             <div class="container">
               <%= render 'layouts/messages' %>
+
+            </div>
+          </div>
+            <div class="container">
+
                 <div class="carousel-caption pull-right">
                     <h1>Picsta</h1>
                     <p class="lead">Picsta makes it simple to save and share your pictures with the most important people in your life, your family. Add images directly from your smartphone or computer without fear of becoming the next social network product.</p>
