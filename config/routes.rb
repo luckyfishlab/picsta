@@ -2,11 +2,11 @@ Picsta::Application.routes.draw do
 
 
 
-  authenticated :user do
-    root :to => "home#index"
-    #root :to => 'albums#index'
-  end
-  root :to => "home#index"
+  #authenticated :user do
+  #  root :to => "home#index"
+  #  #root :to => 'albums#index'
+  #end
+  #root :to => "home#index"
 
 
 
@@ -27,6 +27,7 @@ Picsta::Application.routes.draw do
 
   get "static_pages/home"
 
+  root :to => 'static_pages#home'
   match '/about' => 'static_pages#about'
   match '/privacy_policy' => 'static_pages#privacy'
   match '/thanks' => 'static_pages#thanks'

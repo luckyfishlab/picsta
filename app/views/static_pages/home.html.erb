@@ -1,2 +1,69 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<!-- NAVBAR
+================================================== -->
+<div class="navbar-wrapper">
+    <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+    <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+              <%= render 'layouts/navigation' %>
+            </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+
+    </div> <!-- /.container -->
+</div><!-- /.navbar-wrapper -->
+
+
+<div id="main" role="main">
+<div class="content-wrapper" id="body">
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item active">
+
+            <%= image_tag "birthday_grey.jpg" %>
+            <div class="container">
+                <div class="carousel-caption pull-right">
+                    <h1>Picsta</h1>
+                    <p class="lead">Picsta makes it simple to save and share your pictures with the most important people in your life, your family. Add images directly from your smartphone or computer without fear of becoming the next social network product.</p>
+                    <a class="btn btn-large btn-primary" href="signup.html">More Info</a> <%= link_to 'Login', new_user_session_path, :class => "btn btn-large btn-info" %>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+-->
+</div><!-- /.carousel -->
+
+<div class="content-wrapper" id="body">
+    <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="span4">
+            <h2>Sharing</h2>
+            <p>Sharing should be rewarding. Your grandmother wants to see her grandchild's precious moments and not social network security policy.</p>
+
+        </div><!-- /.span4 -->
+        <div class="span4">
+            <h2>Simple</h2>
+            <p>Upload your family moments now. The simple interface lets you add pictures directly from you smartphone, tablet, or computer. There is no waiting to update client software just to get to your pictures.</p>
+
+        </div><!-- /.span4 -->
+        <div class="span4">
+            <h2>Security</h2>
+            <p>You can't replace lost pictures. Back them up now. Take control of your images. You are not the product. You are the customer.</p>
+
+        </div><!-- /.span4 -->
+    </div><!-- /.row -->
+</div>
+</div>
+</div> <!==! end of .content-wrapper" id="body">
+</div> <!--! end of #main -->
+<div class="content-wrapper" id="footer">
+<div class="container">
+
+<div class="footer">
+ <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
+</div>
+</div>
+</div>

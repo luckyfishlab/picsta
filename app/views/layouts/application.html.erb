@@ -24,15 +24,23 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-      <nav class="navbar-inner">
+    <!-- NAVBAR
+    ================================================== -->
+    <div class="navbar-wrapper">
+        <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
         <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                  <%= render 'layouts/navigation' %>
+                </div><!-- /.navbar-inner -->
+            </div><!-- /.navbar -->
+
+        </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+
 
     <div id="main" role="main">
+    <div class="content-wrapper" id="body">
       <div class="container">
         <div class="content">
            <div class="row">
@@ -43,11 +51,14 @@
           </div>
         </div>
       </div> <!--! end of .container -->
+    </div> <!==! end of .content-wrapper" id="body">
     </div> <!--! end of #main -->
+    <div class="content-wrapper" id="footer">
     <div class="container">
 
     <div class="footer">
      <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
+    </div>
     </div>
     </div>
   </body>
