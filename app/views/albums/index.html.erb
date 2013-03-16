@@ -1,30 +1,5 @@
 
 <div class="row">
-    <div class="span4">
-      <div class="marketing-content">
-        <h3>Share</h3>
-          <p>Share and save your family's memories by creating an album. </p>
-          <p><%= link_to 'New Album', new_album_path, :class=>"btn btn-small btn-primary" %></p>
-      </div>
-    </div>
-    <div class="span4">
-      <div class="marketing-content">
-      <h3>Family</h3>
-      <p>Invite your family.</p>
-      <p><%= link_to 'Invite Users', new_user_invitation_path, :class=>"btn btn-small btn-primary" %></p>
-      </div>
-    </div>
-    <div class="span4">
-      <div class="marketing-content">
-      <h3>Feedback</h3>
-      <p>Have a suggestion? Tell us what you think about Picsta by providing feedback.</p>
-        <p><%= link_to 'Leave Feedback', contact_path, :class=>"btn btn-small btn-primary" %></p>
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
     <div class="span12">
         <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
             <% @albums.each do |album| %>
@@ -53,6 +28,29 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="span4">
+      <div class="marketing-content">
+        <h3>Share</h3>
+          <p>Share and save your family's memories by creating an album. </p>
+          <p><%= link_to 'New Album', new_album_path, :class=>"btn btn-small btn-primary" %></p>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="marketing-content">
+      <h3>Family</h3>
+      <p>Invite your family.</p>
+      <p><%= link_to 'Invite Users', new_user_invitation_path, :class=>"btn btn-small btn-primary" %></p>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="marketing-content">
+      <h3>Feedback</h3>
+      <p>Have a suggestion? Tell us what you think about Picsta by providing feedback.</p>
+        <p><%= link_to 'Leave Feedback', contact_path, :class=>"btn btn-small btn-primary" %></p>
+        </div>
+    </div>
 
+</div>
 
 

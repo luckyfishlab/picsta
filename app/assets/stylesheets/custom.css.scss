@@ -124,6 +124,11 @@ button > a, a.btn {
   }
 }
 
+.marketing .span4 p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 #body.content-wrapper {
     background: #96B0C2;
     background: url(/images/texture-1.png) 0 0 repeat, -moz-radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
@@ -209,8 +214,10 @@ button > a, a.btn {
         font-size: 18px;
     }
 
-    .marketing .span4 + .span4 {
+    .marketing .span4 {
         margin-top: 40px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .featurette-heading {
