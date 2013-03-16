@@ -1,7 +1,7 @@
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 body {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
+
     color: #5a5a5a;
 
 
@@ -132,6 +132,7 @@ button > a, a.btn {
     background: url(/images/texture-1.png) 0 0 repeat, radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
     padding-bottom: 40px;
     padding-top: 60px;
+
     }
 
 #footer.content-wrapper {
@@ -139,5 +140,85 @@ button > a, a.btn {
   padding-bottom: 20px;
   background: #88B263;
   background: url(/images/texture-1.png) repeat 0 0, #88B263;
+
+}
+
+
+@media (max-width: 979px) {
+
+    .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+    }
+    .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+    }
+
+    .carousel .item {
+        height: 500px;
+    }
+    .carousel img {
+        width: auto;
+        height: 500px;
+    }
+
+    .content-wrapper {
+        height: auto;
+        padding: 0;
+    }
+    .featurette-image.pull-left,
+    .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .navbar-inner {
+        margin: -20px;
+    }
+
+    .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .carousel .container {
+
+    }
+    .carousel .item {
+        height: 300px;
+    }
+    .carousel img {
+        height: 300px;
+    }
+    .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+    }
+    .carousel-caption h1 {
+        font-size: 30px;
+    }
+    .carousel-caption .lead,
+    .carousel-caption .btn {
+        font-size: 18px;
+    }
+
+    .marketing .span4 + .span4 {
+        margin-top: 40px;
+    }
+
+    .featurette-heading {
+        font-size: 30px;
+    }
+    .content-wrapper .lead {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 
 }
