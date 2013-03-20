@@ -1,68 +1,56 @@
-<!-- NAVBAR
-================================================== -->
-<div class="navbar-wrapper">
-    <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-    <div class="container">
-        <div class="navbar navbar-inverse">
-            <div class="navbar-inner">
-              <%= render 'layouts/navigation' %>
-            </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->
+<%= render 'layouts/navigation' %>
 
-    </div> <!-- /.container -->
-</div><!-- /.navbar-wrapper -->
 
-<div id="main" role="main">
-<div class="content-wrapper" id="body">
-<div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner">
-        <div class="item active">
+<div class="container-fluid" id="jumbotron">
 
-            <%= image_tag "birthday_grey.jpg" %>
-          <div class="messages-wrapper">
-            <div class="container">
-              <%= render 'layouts/messages' %>
+  <div class="container-narrow">
+    <div class="row-fluid">
+      <%= render 'layouts/messages' %>
 
-            </div>
-          </div>
-            <div class="container">
-
-                <div class="carousel-caption pull-right">
-                    <h1>Picsta</h1>
-                    <p class="lead">Picsta makes it simple to save and share your pictures with the most important people in your life, your family. Add images directly from your smartphone or computer without fear of becoming the next social network product.</p>
-                  <%=  link_to 'More Info', more_info_path, :class =>"btn btn-large btn-primary" %> <%= link_to 'Login', new_user_session_path, :class => "btn btn-large btn-info" %>
-                </div>
-            </div>
-        </div>
     </div>
-<!--    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
--->
-</div><!-- /.carousel -->
 
-<div class="content-wrapper" id="body">
-  <div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="span4">
-          <h2>Simple</h2>
-          <p>Upload your family moments now. The simple interface lets you add pictures directly from you smartphone, tablet, or computer. There is no waiting to update client software just to get to your pictures.</p>
+  <div class="row-fluid">
 
-      </div><!-- /.span4 -->
-      <div class="span4">
-          <h2>Secure</h2>
-          <p>You can't replace lost pictures. Back them up now. Take control of your images. You are not the product. You are the customer.</p>
 
-      </div><!-- /.span4 -->
-
-        <div class="span4">
-            <h2>Shared</h2>
-            <p>Sharing should be rewarding. Your grandmother wants to see her grandchild's precious moments and not social network security policy.</p>
-
-        </div><!-- /.span4 -->
-    </div>
- </div><!-- /.row -->
+      <h1>Picsta</h1>
+      <p class="lead">Picsta makes it simple to save and share your pictures with the most important people in your
+        life, your family. Add images on the go or at home. You'll feel safe knowing they are backed up and secure. Your pictures are immediately shared with the people you invited.</p>
+      <%= link_to 'More Info', more_info_path, :class => "btn btn-large btn-primary" %> <%= link_to 'Login', new_user_session_path, :class => "btn btn-large btn-warning" %>
+  </div>
 </div>
-</div> <!==! end of .content-wrapper" id="body">
-</div> <!--! end of #main -->
+</div>
+
+<div class="container-fluid" id="marketing-body">
+<!-- Three columns below the masthead -->
+<div class="container-narrow">
+<div class="row-fluid">
+  <div class="span4">
+    <h2>Simple</h2>
+
+    <p>Invite your family members with a simple form. We'll send them an email invitation to join.</p>
+
+  </div>
+  <!-- /.span4 -->
+  <div class="span4">
+    <h2>Add Pictures</h2>
+
+    <p>Create an album and start adding photos. You can upload pictures directly from your smartphone, laptop, or home computer.</p>
+
+  </div>
+  <!-- /.span4 -->
+
+  <div class="span4">
+    <h2>Enjoy</h2>
+
+    <p>Images will be immediately available for your family to enjoy. Pictures are shared only with your family.</p>
+
+  </div>
+  <!-- /.span4 -->
+</div><!-- /.row -->
+</div>
+</div><!-- marketing body -->
+
+<div class="container-narrow"><hr/></div>
+
+
 <%= render 'layouts/footer' %>

@@ -1,79 +1,25 @@
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
+html, body {
+  width:100%;
+  overflow-x:hidden;
+}
 body {
-    padding: 0;
 
-    color: #5a5a5a;
+  padding:  0; /* this cuts the unused space along with the width:100%; overflow:hidden */
 
-
-    background: #88B263;
-    background: url(/images/texture-1.png) repeat 0 0, #88B263;
-
+  background: #eee;
+  background: url(./texture-1.png) repeat 0 0, #eee;
 }
 
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  margin-top: 20px;
-  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+#navigation {
+  padding-right: 0;
+  padding-left: 0;
+  background-color: #fff;
 }
-.navbar-wrapper .navbar {
-
-}
-
-/* Remove border and change up box shadow for more contrast */
-.navbar .navbar-inner {
-  border: 0;
-  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-     -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-          box-shadow: 0 2px 10px rgba(0,0,0,.25);
-
-  background: #3f4c6b; /* Old browsers */
-  background: -moz-linear-gradient(top,  #3f4c6b 0%, #3f4c6b 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f4c6b), color-stop(100%,#3f4c6b)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #3f4c6b 0%,#3f4c6b 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #3f4c6b 0%,#3f4c6b 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #3f4c6b 0%,#3f4c6b 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #3f4c6b 0%,#3f4c6b 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
-
-
-}
-
-/* Downsize the brand/project name a bit */
-.navbar .brand {
-  font-family: 'Lobster', Georgia, Times, serif;
-  padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-  font-size: 26px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-}
-
-/* Navbar links: increase padding for taller navbar */
-.navbar .nav > li > a {
-  padding: 15px 20px;
-}
-
-/* Offset the responsive button for proper vertical alignment */
-.navbar .btn-navbar {
-  margin-top: 10px;
-}
-
-
-.hero-unit .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-        text-align: center;
-      }
-
 
 .content {
   background-color: #eee;
-  padding: 20px;
-  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 6px 6px 6px 6px;
+  padding: 0;
+  margin: 0;
   -moz-border-radius: 6px 6px 6px 6px;
   border-radius: 6px 6px 6px 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
@@ -102,134 +48,59 @@ h1 {
     text-shadow: 1px 1px 1px #000;
 }
 
-.hero-unit {
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-}
-
-/* Pick up the buttons so they aren't set by the links */
-button > a, a.btn {
-  //color: #000;
-  &:visited {
-
+  #jumbotron {
+    position: relative;
+    padding: 40px 0;
     color: #fff;
+    text-align: left;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+
+    //
+    //background: #83e1d2; /* Old browsers */
+    //background: -moz-linear-gradient(left,  #83e1d2 0%, #7de0cf 59%, #96e0d4 100%); /* FF3.6+ */
+    //background: -webkit-gradient(linear, left top, right top, color-stop(0%,#83e1d2), color-stop(59%,#7de0cf), color-stop(100%,#96e0d4)); /* Chrome,Safari4+ */
+    //background: -webkit-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* Chrome10+,Safari5.1+ */
+    //background: -o-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* Opera 11.10+ */
+    //background: -ms-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* IE10+ */
+    //background: linear-gradient(to right,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* W3C */
+    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83e1d2', endColorstr='#96e0d4',GradientType=1 ); /* IE6-9 */
+
+
+background: #49a5bf; /* Old browsers */
+   background: -moz-linear-gradient(left,  #49a5bf 0%, #75bdd1 59%, #93cede 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#49a5bf), color-stop(59%,#75bdd1), color-stop(100%,#93cede)); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(left,  #49a5bf 0%,#75bdd1 59%,#93cede 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(left,  #49a5bf 0%,#75bdd1 59%,#93cede 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(left,  #49a5bf 0%,#75bdd1 59%,#93cede 100%); /* IE10+ */
+   background: linear-gradient(to right,  #49a5bf 0%,#75bdd1 59%,#93cede 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49a5bf', endColorstr='#93cede',GradientType=1 ); /* IE6-9 */
+
+    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+       -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+            box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+  }
+
+
+#marketing-body {
+
+}
+.container-narrow {
+margin: 0 auto;
+max-width: 700px;
+}
+
+#myfooter {
+  color: #5a5a5a;
+}
+
+/* Button text gets rendered like the links */
+#jumbotron a.btn {
+  color: #000;
+  &:visited {
+    color: #eee;
 
   }
   &:hover {
-    color: #fff;
-    //background-color: #000;
+    color: #eee;
   }
-}
-
-.marketing .span4 p {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#body.content-wrapper {
-    background: #96B0C2;
-    background: url(/images/texture-1.png) 0 0 repeat, -moz-radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
-    background: url(/images/texture-1.png) 0 0 repeat, -o-radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
-    background: url(/images/texture-1.png) 0 0 repeat, -webkit-radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
-    background: url(/images/texture-1.png) 0 0 repeat, radial-gradient(center, ellipse farthest-corner, #8EABBF 0%, #829CAB 100%);
-    padding-bottom: 40px;
-    padding-top: 60px;
-
-    }
-
-#footer.content-wrapper {
-  padding-top: 20px; /* Vertically center images part 1: add padding above and below text. */
-  padding-bottom: 20px;
-  background: #88B263;
-  background: url(/images/texture-1.png) repeat 0 0, #88B263;
-
-}
-
-.application-wrapper {
-   margin-left: 10px;
-  margin-right: 10px;
-}
-
-@media (max-width: 979px) {
-
-    .container.navbar-wrapper {
-        margin-bottom: 0;
-        width: auto;
-    }
-    .navbar-inner {
-        border-radius: 0;
-        margin: -20px 0;
-    }
-
-    .carousel .item {
-        height: 500px;
-    }
-    .carousel img {
-        width: auto;
-        height: 500px;
-    }
-
-    .content-wrapper {
-        height: auto;
-        padding: 0;
-    }
-    .featurette-image.pull-left,
-    .featurette-image.pull-right {
-        display: block;
-        float: none;
-        max-width: 40%;
-        margin: 0 auto 20px;
-    }
-}
-
-
-@media (max-width: 767px) {
-
-    .navbar-inner {
-        margin: -20px;
-    }
-
-    .carousel {
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-    .carousel .container {
-
-    }
-    .carousel .item {
-        height: 300px;
-    }
-    .carousel img {
-        height: 300px;
-    }
-    .carousel-caption {
-        width: 65%;
-        padding: 0 70px;
-        margin-top: 100px;
-    }
-    .carousel-caption h1 {
-        font-size: 30px;
-    }
-    .carousel-caption .lead,
-    .carousel-caption .btn {
-        font-size: 18px;
-    }
-
-    .marketing .span4 {
-        margin-top: 40px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .featurette-heading {
-        font-size: 30px;
-    }
-    .content-wrapper .lead {
-        font-size: 18px;
-        line-height: 1.5;
-    }
-
 }

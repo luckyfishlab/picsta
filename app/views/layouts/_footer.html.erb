@@ -1,8 +1,20 @@
-<div class="content-wrapper" id="footer">
-<div class="container">
+<div class="container-fluid" id="myfooter">
+  <div class="container-narrow">
+  <div class="row-fluid">
+    <div class="footer">
+      <div class="span6">
+        <p><%= link_to(image_tag('facebook.png'), 'http://facebook.com/picstacloud') %> <%= link_to(image_tag('twitter_bird.png'), 'http://twitter.com/picstacloud') %> <%= link_to(image_tag('pinterest.png'), 'http://pinterest.com/picsta') %></p>
 
-<div class="footer">
- <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
-</div>
-</div>
+        <p><i class="icon-pencil"></i> <a href="mailto:hello@picsta.co">Say hello@picsta.co</a></p>
+
+        <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved
+          · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> </p>
+      </div>
+      <div class="span2">
+        <%= image_tag 'logo_footer.png' %>
+      </div>
+
+    </div>
+  </div>
+  </div>
 </div>

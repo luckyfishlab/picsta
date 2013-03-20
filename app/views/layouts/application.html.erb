@@ -24,37 +24,24 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 
-    <!-- NAVBAR
-    ================================================== -->
-    <div class="navbar-wrapper">
-        <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-        <div class="container">
-            <div class="navbar navbar-inverse">
-                <div class="navbar-inner">
-                  <%= render 'layouts/navigation' %>
-                </div><!-- /.navbar-inner -->
-            </div><!-- /.navbar -->
-
-        </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
+  <%= render 'layouts/navigation' %>
 
 
-    <div id="main" role="main">
-    <div class="content-wrapper" id="body">
-      <div class="container">
-        <div class="content">
-           <div class="row">
+
+      <div class="container-fluid" id="jumbotron">
+        <div class="container-narrow">
+           <div class="row-fluid">
             <div class="span12">
               <div class="application-wrapper">
                   <%= render 'layouts/messages' %>
                   <%= yield %>
               </div>
+              </div>
             </div>
           </div>
-        </div>
+
       </div> <!--! end of .container -->
-    </div> <!==! end of .content-wrapper" id="body">
-    </div> <!--! end of #main -->
+  <div class="container-narrow"><hr/></div>
     <%= render 'layouts/footer' %>
   </body>
 </html>
