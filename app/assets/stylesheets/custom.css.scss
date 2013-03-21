@@ -89,6 +89,26 @@ margin: 0 auto;
 max-width: 700px;
 }
 
+.container-large {
+  margin: 10 auto;
+  background-color: #eee;
+}
+
+.content p {
+  color: #0e0e0e;
+}
+
+.content, .actions a {
+  color: #0e0e0e;
+  &:visited {
+    color: #0e0e0e;
+
+  }
+  &:hover {
+    color: #5a5a5a;
+  }
+}
+
 #myfooter {
   color: #5a5a5a;
 }

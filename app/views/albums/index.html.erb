@@ -1,6 +1,7 @@
 
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
+      <div class="content">
         <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
             <% @albums.each do |album| %>
                <div class="box">
@@ -25,10 +26,12 @@
                 </div>
 
             <% end %>
+          </div>
         </div>
     </div>
 </div>
-<div class="row">
+
+<div class="row-fluid">
   <div class="marketing-content">
     <div class="container">
     <div class="span3">
