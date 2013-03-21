@@ -1,7 +1,9 @@
 <h2>Sign up</h2>
+
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
+    Sign up for a free 14 day trial.You can start backing up and sharing your images immediately.
   <%= f.input :name, :autofocus => true %>
   <%= f.input :email, :required => true %>
   <%= f.input :password, :required => true %>

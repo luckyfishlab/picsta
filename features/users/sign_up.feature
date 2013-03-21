@@ -5,6 +5,7 @@ Feature: Sign up
 
     Background:
       Given I am not logged in
+      And The "silver" plan exists
 
     Scenario: User signs up with valid data
       When I sign up with valid user data

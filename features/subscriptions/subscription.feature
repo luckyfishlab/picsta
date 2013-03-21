@@ -12,13 +12,12 @@ Feature: Subscription plans
 
   Scenario: Thanks page
      When I sign up with valid user data
-     Then I should be on the "thanks" page
-      And I should see "Thanks"
+     Then I should be on the "new subscription" page
+      And I should see "Complete your registration"
 
-  Scenario: Can look at available plans
-      And I sign up with valid user data
-     When I click the link "Subscribe"
-     Then I should see "Choose a subscription plan"
+#  Scenario: Can look at available plans
+#      And I sign up with valid user data
+#     Then I should see "Complete your registration"
 
 #  Scenario: Can pick a plan
 #    And I sign up with valid user data

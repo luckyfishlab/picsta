@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
-<h2>Choose a subscription plan</h2>
+<h2>Complete your registration</h2>
 
 <%= simple_form_for @subscription do |f| %>
 
@@ -16,6 +16,9 @@
       </ul>
     </div>
   <% end %>
+
+    <p>You won't be charged until after the trial period ends. We'll remind you before your trial ends.</p>
+    <p>Feel free to cancel at anytime.</p>
 
     <%= f.hidden_field :stripe_token %>
 
@@ -49,6 +52,6 @@
     </div>
 
 
-    <%= f.submit 'Submit' %>
+    <%= f.submit 'Submit', :class => "btn btn-large btn-primary" %>
 
 <% end %>
