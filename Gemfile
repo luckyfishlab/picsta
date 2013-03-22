@@ -68,3 +68,6 @@ gem 'gibbon'
 # Billing
 gem "stripe", ">= 1.7.4"
 gem "stripe_event", ">= 0.4.0"
+
+# Blog
+gem 'bloggy'
