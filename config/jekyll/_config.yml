@@ -1,0 +1,10 @@
+markdown: rdiscount
+permalink: pretty
+destination: ../../app/views/blog
+baseurl: /blog
+auto: false
+server: false
+exclude:
+  - Rakefile
+  - Gemfile
+  - .gitignore

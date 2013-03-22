@@ -36,5 +36,6 @@ Picsta::Application.routes.draw do
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
+  match '/blog(:id)', to: 'blog#proxy', :id => /.+/
 
 end
