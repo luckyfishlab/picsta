@@ -23,3 +23,7 @@ user = User.find_by_name ENV['ADMIN_NAME']
 role = Role.find_by_name :admin
 role.create_membership!(user)
 puts "#{role.name}: " << user.name
+
+puts 'DEFAULT PLAN'
+plan = Plan.find_or_create_by_name :name => 'Standard', :price => 1000, :description => "5GB of storage with 10 invitations"
+puts 'plan: ' << plan.name

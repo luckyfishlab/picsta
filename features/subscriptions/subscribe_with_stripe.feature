@@ -5,7 +5,7 @@ Feature: User signs up with stripe
   Background:
     Given: I am on the home page
      And I am logged in
-     And The "silver" plan exists
+     And The "standard" plan exists
      And I visit the "/subscriptions/new" page
     Then I should see "Complete your registration"
 
