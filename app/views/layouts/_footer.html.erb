@@ -1,20 +1,28 @@
 <div class="container-fluid" id="myfooter">
   <div class="container-narrow">
+ <div class="footer">
   <div class="row-fluid">
-    <div class="footer">
-      <div class="span6">
+      <div class="span4">
+        <strong>Follow us:</strong>
         <p><%= link_to(image_tag('facebook.png'), 'http://facebook.com/picstacloud') %> <%= link_to(image_tag('twitter_bird.png'), 'http://twitter.com/picstacloud') %> <%= link_to(image_tag('pinterest.png'), 'http://pinterest.com/picsta') %></p>
-
+        <strong>Contact:</strong>
         <p><i class="icon-pencil"></i> <a href="mailto:hello@picsta.co">Say hello@picsta.co</a></p>
-
-        <p>Handcrafted in Mobile Alabama &copy; 2013 Dana Spisak · All Rights Reserved
-          · <%= link_to 'Privacy Policy', privacy_policy_path %> · <%= link_to 'About Picsta', about_path %> · <%= link_to 'Blog', '/blog' %></p>
       </div>
-      <div class="span2">
+      <div class="span4">
+        <%= link_to 'Privacy Policy', privacy_policy_path %><br/>
+        <%= link_to 'About Picsta', about_path %>
+      </div>
+      <div class="span4">
         <%= image_tag 'logo_footer.png' %>
       </div>
 
+
     </div>
+  <div class="row-fluid">
+          <div class="span12">
+            <p>Handcrafted in Mobile Alabama &copy; 2013 <%= link_to 'Luckyfish Lab','http://luckyfishlab.com' %> · All Rights Reserved</p>
+          </div>
+        </div>
   </div>
   </div>
 </div>

@@ -4,12 +4,38 @@
  <title>BLOG_NAME</title>
  <link href="YOUR_URL/atom.xml" rel="self"/>
  <link href="YOUR_URL"/>
- <updated>2013-03-22T15:05:48-05:00</updated>
+ <updated>2013-03-22T15:58:29-05:00</updated>
  <id>BLOG_URL</id>
  <author>
    <name>BLOG_NAME</name>
  </author>
 
+ 
+ <entry>
+   <title>This is a new post</title>
+   <link href="YOUR_URL/2013/03/22/this-is-a-new-post/"/>
+   <updated>2013-03-22T00:00:00-05:00</updated>
+   <id>BLOG_URL/2013/03/22/this-is-a-new-post</id>
+   <content type="html">&lt;p&gt;Yes it is a new post. I'm not sure why it doesn't show up. OH! I see. I bet I'm supposed to change the published value in the YAML header.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>5 Ways to Take Better Baby Photos</title>
+   <link href="YOUR_URL/2013/03/22/5-ways-to-take-better-baby-photos/"/>
+   <updated>2013-03-22T00:00:00-05:00</updated>
+   <id>BLOG_URL/2013/03/22/5-ways-to-take-better-baby-photos</id>
+   <content type="html">&lt;p&gt;Get down to their level. I find that photos are much more interesting when they are taken from the same level as the child. The alternative to avoid is always looking down. Of course there are always exceptions, but as general advice get on the same level as your subject.&lt;/p&gt;
+
+&lt;p&gt;Be conscious of the lighting. While trying to capture a sincere moment, think about the lighting and adjust your position. If the child is in front of a window, try moving to the side. Lighting up the child's face from the side is much nicer than capturing a backlit shadow.&lt;/p&gt;
+
+&lt;p&gt;Think about why you want to take the photo. What is it about the moment that you want to capture? Get up close and fill the frame with the emotion, contrast, expression, or scene.&lt;/p&gt;
+
+&lt;p&gt;Don't worry about the latest camera. Use what you have even if that means your cellphone. The camera won't transform a boring subject in to an incredible photo.&lt;/p&gt;
+
+&lt;p&gt;Save and share your photos. It is far too easy to drop and break a cellphone. Don't let an accidental loss take your photos as well.&lt;/p&gt;
+</content>
+ </entry>
  
  
 </feed>

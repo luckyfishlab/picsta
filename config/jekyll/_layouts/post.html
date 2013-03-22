@@ -4,11 +4,13 @@ layout: default
 <% content_for :title do %>
 {{ page.title }} :: Blog
 <% end %>
-
+<div class="content">
+<div class="row-fluid">
 <div id="post">
 {{ content }}
 </div>
-
+</div> <!-- .row-fluid -->
+    <div class="row-fluid">
 <div id="related">
   <h2>Related Posts</h2>
   <ul class="posts">
@@ -16,4 +18,6 @@ layout: default
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="/blog{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
+</div>
+    </div> <!-- .row-fluid -->
 </div>
