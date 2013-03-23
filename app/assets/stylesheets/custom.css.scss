@@ -15,7 +15,22 @@ body {
   padding-left: 0;
   background-color: #fff;
 }
+/* Downsize the brand/project name a bit */
+.navbar .brand {
+  font-family: 'Lobster', Georgia, Times, serif;
+  padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
 
+  &:hover {
+  background-color: transparent;
+  color: #333333;
+  text-decoration: none;
+  }
+
+
+}
 .content {
   background-color: #eee;
   padding: 0;
@@ -50,25 +65,17 @@ h1 {
     text-shadow: 1px 1px 1px #000;
 }
 
-  #jumbotron {
-    position: relative;
-    padding: 40px 0;
+  .jumbotron-content {
     color: #fff;
     text-align: left;
     text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-
-    //
-    //background: #83e1d2; /* Old browsers */
-    //background: -moz-linear-gradient(left,  #83e1d2 0%, #7de0cf 59%, #96e0d4 100%); /* FF3.6+ */
-    //background: -webkit-gradient(linear, left top, right top, color-stop(0%,#83e1d2), color-stop(59%,#7de0cf), color-stop(100%,#96e0d4)); /* Chrome,Safari4+ */
-    //background: -webkit-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* Chrome10+,Safari5.1+ */
-    //background: -o-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* Opera 11.10+ */
-    //background: -ms-linear-gradient(left,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* IE10+ */
-    //background: linear-gradient(to right,  #83e1d2 0%,#7de0cf 59%,#96e0d4 100%); /* W3C */
-    //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83e1d2', endColorstr='#96e0d4',GradientType=1 ); /* IE6-9 */
+  }
+  .jumbotron-container {
+    position: relative;
+    padding: 40px 0;
 
 
-background: #49a5bf; /* Old browsers */
+   background: #49a5bf; /* Old browsers */
    background: -moz-linear-gradient(left,  #49a5bf 0%, #75bdd1 59%, #93cede 100%); /* FF3.6+ */
    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#49a5bf), color-stop(59%,#75bdd1), color-stop(100%,#93cede)); /* Chrome,Safari4+ */
    background: -webkit-linear-gradient(left,  #49a5bf 0%,#75bdd1 59%,#93cede 100%); /* Chrome10+,Safari5.1+ */
@@ -82,10 +89,10 @@ background: #49a5bf; /* Old browsers */
             box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
   }
 
-#jumbotron .content {
+/*#jumbotron .content {
   text-shadow: none;
 }
-
+  */
 #marketing-body {
 
 }
@@ -119,7 +126,7 @@ max-width: 700px;
 }
 
 /* Button text gets rendered like the links */
-#jumbotron a.btn {
+.jumbotron-container a.btn {
   color: #eee;
   &:visited {
     color: #eee;
