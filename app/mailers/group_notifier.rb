@@ -1,4 +1,4 @@
-class AlbumNotifier < ActionMailer::Base
+class GroupNotifier < ActionMailer::Base
 
   def welcome_email(user)
     @from = "from@example.com"
@@ -7,13 +7,14 @@ class AlbumNotifier < ActionMailer::Base
     mail(:to => user.email, :from => @from, :subject => "Welcome to My Awesome Site")
   end
 
-  def album_updated(user_id, album_id)
+  def group_updated(user_id, group_id, updated_albums)
     @from = "news@picsta.co"
     @user = User.find(user_id)
-    @album = Album.find(album_id)
+    @group = Group.find(group_id)
+    @updated_albums = updated_albums
 
     mail(:to =>@user.email, :from => @from, :subject => "New pictures were added")
     headers['X-MC-GoogleAnalytics'] = "picsta.co"
-    headers['X-MC-Tags'] = "album_update"
+    headers['X-MC-Tags'] = "group_update"
   end
 end

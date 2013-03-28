@@ -1,0 +1,12 @@
+
+New pictures were recently added.
+
+You can find them here:
+<% @updated_albums.each do |album_h| %>
+  <%= link_to album_h[:title], album_url(album_h[:album_id]) %>
+<% end %>
+Please login and enjoy!
+
+Regards,
+Dana
+picsta.co

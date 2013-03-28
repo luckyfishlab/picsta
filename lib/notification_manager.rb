@@ -28,7 +28,7 @@ class NotificationManager
 
         # check what stats we need to update
         if current_image_count != last_image_count
-          album_stat = {:album_id=>album.id, :new_image_count=>current_image_count}
+          album_stat = {:album_id=>album.id, :title=>album.title, :new_image_count=>current_image_count}
           if current_image_count > last_image_count
             album_stat[:delta] = (current_image_count - last_image_count)
           end
@@ -40,12 +40,19 @@ class NotificationManager
     albums_list
   end
 
-  def create_mail_list (albums_list)
+  def create_updated_groups_list (album_list)
+    updated_groups = []
+    album_list.each do |album_h|
+        updated_groups << Album.find(album_h[:album_id]).folder.group_id
+    end
+    updated_groups.uniq
+  end
+
+  def create_mail_list (updated_groups, updated_albums)
     undelivered_email_list = []
-    albums_list.each do |album_h|
-      album_id = album_h[:album_id]
-      album_h[:subscribers].each do |user_id|
-        undelivered_email_list << AlbumNotifier.album_updated(user_id, album_id)
+    updated_groups.each do |group_id|
+      Group.find(group_id).users.each do |user|
+        undelivered_email_list << GroupNotifier.group_updated(user.id, group_id, updated_albums)
       end
     end
     undelivered_email_list
@@ -62,8 +69,8 @@ class NotificationManager
 
   def process
     updated_albums = create_updated_albums_list
-    updated_albums = create_album_subscriber_list(updated_albums)
-    undelivered_email = create_mail_list(updated_albums)
+    group_list = create_updated_groups_list updated_albums
+    undelivered_email = create_mail_list(group_list, updated_albums)
     pp updated_albums
     undelivered_email.each { |email| email.deliver }
     update_album_stat_records(updated_albums)
