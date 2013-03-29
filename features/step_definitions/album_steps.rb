@@ -84,3 +84,7 @@ end
 Then /^I should see the album "(.*?)"$/ do |arg1|
   page.should have_content arg1
 end
+
+Then /^I should not see the "(.*?)" link$/ do |arg1|
+  page.should_not have_content arg1
+end

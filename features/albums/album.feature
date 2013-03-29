@@ -25,3 +25,12 @@ Feature: Manage Albums
     When I list albums
     Then I should see the album "Test Album"
 
+  Scenario: I can't see other subscriber's albums
+    Given I am logged in as "Steve" as a "subscriber"
+    Given I create the album "Test Album"
+    And I sign out
+    Given I am logged in as "jeff" as a "subscriber"
+    Given I create the album "Joe Album"
+    And I visit the album "Joe Album"
+    When I list albums
+    Then I should not see the "Test Album" link

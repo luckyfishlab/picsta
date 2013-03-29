@@ -7,13 +7,15 @@ def create_visitor
 end
 
 def create_user_as opt, symbol
-  @visitor ||= { :name => opt,  :email => "#{opt.gsub(/ /, '.')}@example.com",
+  @visitor = { :name => opt,  :email => "#{opt.gsub(/ /, '.')}@example.com",
                     :password => "changeme", :password_confirmation => "changeme" }
   # delete
   @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?
 
-  @user = FactoryGirl.create(symbol, @visitor)
+  @user = FactoryGirl.build(symbol, @visitor)
+  #puts "#{@visitor[:name]} == #{@user.name}"
+  @user.save
 end
 
 def find_user

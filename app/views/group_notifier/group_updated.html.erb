@@ -8,7 +8,7 @@
 <p>
   You can find them here:
     <% @updated_albums.each do |album_h| %>
-      <%= link_to album_h[:title], album_url(album_h[:album_id]) %>
+      <%= link_to album_h[:title], album_url(album_h[:album_id]) %><br/>
     <% end %>
 </p>
 <p>
