@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316180726) do
+ActiveRecord::Schema.define(:version => 20130330163123) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20130316180726) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "album_stats", ["album_id"], :name => "index_album_stats_on_album_id"
+
   create_table "albums", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -46,11 +48,17 @@ ActiveRecord::Schema.define(:version => 20130316180726) do
     t.integer  "folder_id"
   end
 
+  add_index "albums", ["folder_id"], :name => "index_albums_on_folder_id"
+  add_index "albums", ["image_id"], :name => "index_albums_on_image_id"
+  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
+
   create_table "folders", :force => true do |t|
     t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "folders", ["group_id"], :name => "index_folders_on_group_id"
 
   create_table "group_users", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +66,9 @@ ActiveRecord::Schema.define(:version => 20130316180726) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "group_users", ["group_id"], :name => "index_group_users_on_group_id"
+  add_index "group_users", ["user_id"], :name => "index_group_users_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.integer  "owner_id"
@@ -74,12 +85,17 @@ ActiveRecord::Schema.define(:version => 20130316180726) do
     t.integer  "file_size"
   end
 
+  add_index "images", ["album_id"], :name => "index_images_on_album_id"
+
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "memberships", ["role_id"], :name => "index_memberships_on_role_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "plans", :force => true do |t|
     t.string   "name"
@@ -103,6 +119,9 @@ ActiveRecord::Schema.define(:version => 20130316180726) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "subscriptions", ["plan_id"], :name => "index_subscriptions_on_plan_id"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
