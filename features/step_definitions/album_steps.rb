@@ -21,6 +21,14 @@ When /^An image is added to a shared album$/ do
   }
 end
 
+When /^I add an image to "(.*?)"$/ do |arg1|
+  steps %{
+    And I visit the album "#{arg1}"
+    And I want to add images to the album
+    And I upload an image
+  }
+end
+
 Given /^I create the album "(.*?)"$/ do |arg1|
   visit '/albums'
   click_link "New Album"

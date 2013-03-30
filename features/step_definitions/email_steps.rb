@@ -109,9 +109,18 @@ Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
   current_email.default_part_body.to_s.should include(text)
 end
 
+Then /^(?:I|they) should not see "([^"]*?)" in the email body$/ do |text|
+  current_email.default_part_body.to_s.should_not include(text)
+end
+
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
   current_email.default_part_body.to_s.should =~ Regexp.new(text)
 end
+
+Then /^(?:I|they) should not see \/([^"]*?)\/ in the email body$/ do |text|
+  current_email.default_part_body.to_s.should_not =~ Regexp.new(text)
+end
+
 
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|
   current_email.should be_delivered_from(text)

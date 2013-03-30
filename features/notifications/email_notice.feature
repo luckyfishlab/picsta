@@ -29,3 +29,25 @@ Feature: Email notice
     And they should see "Test Album" in the email body
 
   Scenario: Non group user does not get an email notice
+     Given I am logged in as "Joe" as a "subscriber"
+     And I create the album "Joe Album"
+     When Album email notifications are processed
+    Then "joe@example.com" should receive 0 emails
+
+  Scenario: Group users get correct album notices
+    Given I am logged in as "Joe" as a "subscriber"
+    And I create the album "Joe Album"
+    And I add an image to "Joe Album"
+    And I create the album "Joes Other Album"
+    And I add an image to "Joes Other Album"
+    When Album email notifications are processed
+    Then "joe@example.com" should receive 1 emails
+    And "joe@example.com" opens the email
+    And they should not see "Test Album" in the email body
+    And they should see "Joes Other Album" in the email body
+    And "invited@example.com" should receive 1 emails
+    And "invited@example.com" opens the email
+    But they should not see "Joe Album" in the email body
+    And they should not see "Joes Other Album" in the email body
+
+
