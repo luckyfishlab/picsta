@@ -15,15 +15,15 @@ Picsta::Application.routes.draw do
 
 
   resources :albums
-  resources :activities
-  resources :users
-  resources :images
+  resources :activities, :only => [:index]
+  resources :users, :only => [:show, :update, :index]
+  resources :images, :only => [:show, :new, :create, :destroy, :index]
 
   match 'update_plan' => 'subscriptions#update_plan', :via => :put
   match 'update_card' => 'subscriptions#update_card', :via => :put
 
 
-  resources :subscriptions
+  resources :subscriptions, :only => [:new, :create, :edit, :update]
 
   get "static_pages/home"
 
