@@ -3,14 +3,14 @@
 <% end %>
 <h2>Complete your registration</h2>
 
-<%= simple_form_for @subscription do |f| %>
+<%= simple_form_for subscription do |f| %>
 
-  <% if @subscription.errors.any? %>
+  <% if subscription.errors.any? %>
 
     <div class="error_messages">
-      <h3><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h3>
+      <h3><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h3>
       <ul>
-      <% @subscription.errors.full_messages.each do |msg| %>
+      <% subscription.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -35,7 +35,7 @@
 
     <div class="field">
       <%= label_tag :name_on_card %>
-      <%= text_field_tag :user_name, @user.name %>
+      <%= text_field_tag :user_name, user.name %>
     </div>
     <div class="field">
     <%= label_tag :card_number, "Credit Card Number" %>

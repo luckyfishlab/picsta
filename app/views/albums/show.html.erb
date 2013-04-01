@@ -1,21 +1,20 @@
 
-  <div class="row-fluid">
-    <div class="span12">
+<div class="row-fluid">
+  <div class="span12">
       <div class="content">
-<h2><%= @album.title %></h2>
-<%= toolbar_helper(@album) %>
-<%= link_to 'Back', albums_path %>
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-  <% i = 0 %>
-  <% @album.images.reverse.each do |image| %>
-    <div class="box">
-      <p><%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), image %></p>
-     </div>
-<% end %>
-</div>
-<%= toolbar_helper(@album) %>
-<%= link_to 'Back', albums_path %>
-
+        <h2><%= @album.title %></h2>
+        <%= toolbar_helper(@album) %>
+        <%= link_to 'Back', albums_path %>
+        <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+          <% i = 0 %>
+          <% @album.images.reverse.each do |image| %>
+            <div class="box">
+              <p><%= link_to image_tag( image.pic_url(:thumb), :alt =>  image.title.to_s), image %></p>
+             </div>
+        <% end %>
+        </div>
+        <%= toolbar_helper(@album) %>
+        <%= link_to 'Back', albums_path %>
     </div>
   </div>
 </div>
