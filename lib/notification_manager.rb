@@ -2,19 +2,29 @@
 # It is meant to be started from a rake task in the running context.
 class NotificationManager
 
+  def get_last_image_count album_stat
+    last_image_count = 0
+    if !album_stat.last_image_count.nil?
+        last_image_count = album_stat.last_image_count
+    end
+    last_image_count
+  end
+
+  def create_album_stat_hash (album, image_count)
+    folder = album.folder
+    album_stat = {:album_id=>album.id, :title=>album.title, :new_image_count=>image_count, :group_id => folder.group_id}
+  end
+
   def create_updated_albums_list
     albums_list = []
     Album.all.each do |album|
       unless album.images.count.nil?
         current_image_count = album.images.count
-        last_image_count = 0
-        unless album.album_stat.last_image_count.nil?
-          last_image_count = album.album_stat.last_image_count
-        end
+        last_image_count = get_last_image_count album.album_stat
 
         # check what stats we need to update
         if current_image_count != last_image_count
-          album_stat = {:album_id=>album.id, :title=>album.title, :new_image_count=>current_image_count, :group_id => album.folder.group_id}
+          album_stat = create_album_stat_hash(album, current_image_count)
           if current_image_count > last_image_count
             album_stat[:delta] = (current_image_count - last_image_count)
           end

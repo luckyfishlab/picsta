@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
       r = Role.find_by_name(:subscriber)
       r.create_membership! self unless r.nil?
       # Create subscriber resources
-      g = Group.create(:owner_id => id)
+      g = Group.create!(:owner_id => id)
       g.create_group_user! self
     end
   end

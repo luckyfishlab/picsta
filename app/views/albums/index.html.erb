@@ -11,8 +11,9 @@
                   <% end %>
 
                   <p><%= link_to album.title, album %>
-                  <% unless album.user.nil? or album.user.name.nil? %>
-                        shared by <%= album.user.name %>
+                  <% user = album.user %>
+                  <% unless user.nil? or user.name.nil? %>
+                        shared by <%= user.name %>
                     <% end %>
                   </p>
                   <p><%= album.images.count %> image(s)</p>

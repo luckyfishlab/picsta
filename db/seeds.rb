@@ -10,7 +10,7 @@
 
 puts 'ROLES'
 YAML.load(ENV['ROLES']).each do |role|
-  Role.create({ :name => role })
+  Role.create!({ :name => role })
   puts 'role: ' << role
 end
 
