@@ -45,10 +45,10 @@
 <% @groups.each do |group| %>
    <tr>
      <td><%= group.id %></td>
-     <td><%= User.find(group.owner_id).name.nil? ? User.find(group.owner_id).email : User.find(group.owner_id).name %></td>
+     <td><%= User.name_or_email(group.owner_id) %></td>
      <td>
      <% GroupUser.find_all_by_group_id(group.id).each do |group_user| %>
-        <%= User.find(group_user.user_id).name.nil? ? User.find(group_user.user_id).email : User.find(group_user.user_id).name %>
+        <%= User.name_or_email(group_user.user_id) %>
      <% end %>
      </td>
    </tr>

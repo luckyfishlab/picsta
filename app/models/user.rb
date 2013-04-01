@@ -34,17 +34,20 @@ class User < ActiveRecord::Base
   end
 
   def invited_by_name
-    u = User.find(invited_by_id)
-    if u.nil?
+    User.name_or_email(invited_by_id)
+  end
+
+  def self.name_or_email user_id
+    user = User.find(user_id)
+    if user.nil?
       'a user which is no longer active'
     else
-      if u.name.nil?
-        u.email
+      if user.name.nil?
+        user.email
       else
-        u.name
+        user.name
       end
     end
-
   end
 
   def create_subscriber_resource_chain
