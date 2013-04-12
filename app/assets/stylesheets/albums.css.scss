@@ -22,3 +22,9 @@
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+.albums.show, .albums.index {
+  .container-narrow {
+    max-width: 90%;
+  }
+}
