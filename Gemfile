@@ -9,6 +9,7 @@ gem 'rspec', :require => false
 group :test, :development do
   gem 'sqlite3'
   gem 'metric_fu'
+  gem 'simplecov'
 end
 group :production do
   gem 'pg', :require => false

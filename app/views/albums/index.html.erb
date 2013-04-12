@@ -12,7 +12,7 @@
 
                   <p><%= link_to album.title, album %>
                   <% user = album.user %>
-                  <% unless user.nil? or user.name.nil? %>
+                  <% unless user.nil? or user.name? %>
                         shared by <%= user.name %>
                     <% end %>
                   </p>

@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
       flash[:notice] = "The image was saved successfully."
       redirect_to @image.album
     else
-      render :action => "new"
+      render :new
     end
   end
 

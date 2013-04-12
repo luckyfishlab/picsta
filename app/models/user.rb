@@ -42,10 +42,10 @@ class User < ActiveRecord::Base
     if user.nil?
       'a user which is no longer active'
     else
-      if user.name.nil?
-        user.email
-      else
+      if user.name?
         user.name
+      else
+        user.email
       end
     end
   end
